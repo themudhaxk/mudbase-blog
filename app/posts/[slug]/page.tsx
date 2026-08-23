@@ -50,6 +50,22 @@ function stripTitleHeading(body: string, title: string): string {
   return body.replace(firstHeadingPattern, "");
 }
 
+// Routes markdown-embedded images through Next's server-side image proxy instead of
+// linking directly to api.mudbase.dev — a direct cross-origin <img> load is blocked by
+// Chrome (net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin) because that endpoint sends a
+// Cross-Origin-Resource-Policy header. The proxy fetches server-side, sidestepping it.
+function proxiedImageSrc(src: string): string {
+  // 1920 must be one of next.config.ts's (default) images.deviceSizes entries — an
+  // arbitrary width is rejected by the optimizer with a 400.
+  return `/_next/image?url=${encodeURIComponent(src)}&w=1920&q=75`;
+}
+
+function MarkdownImage({ src, alt }: { src?: string; alt?: string }): React.JSX.Element | null {
+  if (!src) return null;
+  // eslint-disable-next-line @next/next/no-img-element -- plain img avoids next/image's fill/dimension requirements inside free-flowing prose content
+  return <img src={proxiedImageSrc(src)} alt={alt ?? ""} loading="lazy" />;
+}
+
 export default async function PostPage({ params }: PostPageProps): Promise<React.JSX.Element> {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
@@ -88,7 +104,11 @@ export default async function PostPage({ params }: PostPageProps): Promise<React
         </div>
 
         <div className="prose-mud">
-          <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeHighlight]}
+            components={{ img: MarkdownImage }}
+          >
             {content}
           </ReactMarkdown>
         </div>
