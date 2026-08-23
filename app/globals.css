@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Fraunces", serif;
+  --font-sans: "Inter", -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  @apply bg-ink-50 text-ink-900 antialiased;
+}
+
+.dark body {
+  @apply bg-ink-950 text-ink-100;
+}
+
+::selection {
+  @apply bg-mud-500/30;
+}
+
+.prose-mud {
+  @apply text-ink-800 dark:text-ink-200;
+}
+
+.prose-mud h2 {
+  @apply mt-12 mb-4 font-display text-2xl font-medium text-ink-950 dark:text-ink-50 md:text-3xl;
+}
+
+.prose-mud h3 {
+  @apply mt-8 mb-3 font-display text-xl font-medium text-ink-950 dark:text-ink-50;
+}
+
+.prose-mud p {
+  @apply mb-5 leading-[1.75];
+}
+
+.prose-mud a {
+  @apply text-mud-600 underline decoration-mud-300 underline-offset-2 hover:decoration-mud-600 dark:text-mud-300 dark:decoration-mud-500;
+}
+
+.prose-mud ul {
+  @apply mb-5 ml-5 list-disc space-y-2;
+}
+
+.prose-mud ol {
+  @apply mb-5 ml-5 list-decimal space-y-2;
+}
+
+.prose-mud strong {
+  @apply font-semibold text-ink-950 dark:text-ink-50;
+}
+
+.prose-mud img {
+  @apply my-8 w-full rounded-lg border border-ink-200 dark:border-ink-700;
+}
+
+.prose-mud pre {
+  @apply my-6 overflow-x-auto rounded-lg border border-ink-200 bg-ink-100 p-4 text-sm dark:border-ink-700 dark:bg-ink-900;
+}
+
+.prose-mud code {
+  @apply rounded bg-ink-100 px-1.5 py-0.5 font-mono text-[0.85em] text-clay-500 dark:bg-ink-800 dark:text-clay-400;
+}
+
+.prose-mud pre code {
+  @apply bg-transparent p-0 text-ink-900 dark:text-ink-100;
+}
+
+.prose-mud hr {
+  @apply my-10 border-ink-200 dark:border-ink-700;
+}
