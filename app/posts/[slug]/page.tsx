@@ -4,6 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import ReactMarkdown from "react-markdown";
+import { showcaseForSlug } from "@/lib/showcases";
+import { ShowcaseLinksBar } from "@/components/showcase-links";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import { SiteHeader } from "@/components/site-header";
@@ -73,6 +75,7 @@ export default async function PostPage({ params }: PostPageProps): Promise<React
   if (!post) notFound();
 
   const content = stripTitleHeading(post.body, post.title);
+  const showcase = showcaseForSlug(post.slug);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -102,6 +105,8 @@ export default async function PostPage({ params }: PostPageProps): Promise<React
         <div className="relative my-10 aspect-[16/9] overflow-hidden rounded-xl border border-ink-200 bg-ink-100 dark:border-ink-700 dark:bg-ink-900">
           <Image src={post.coverImage} alt="" fill sizes="768px" className="object-cover" priority />
         </div>
+
+        {showcase && <ShowcaseLinksBar links={showcase} />}
 
         <div className="prose-mud">
           <ReactMarkdown
