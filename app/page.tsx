@@ -1,13 +1,12 @@
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { PostCard } from "@/components/post-card";
+import { PostSearch } from "@/components/post-search";
 import { getPublishedPosts } from "@/lib/mudbase";
 
 export const revalidate = 300;
 
 export default async function HomePage(): Promise<React.JSX.Element> {
   const posts = await getPublishedPosts();
-  const [featured, ...rest] = posts;
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -29,16 +28,10 @@ export default async function HomePage(): Promise<React.JSX.Element> {
         {posts.length === 0 ? (
           <p className="text-ink-500">No posts published yet — check back soon.</p>
         ) : (
-          <div className="flex flex-col gap-16">
-            {featured && <PostCard post={featured} featured />}
-            {rest.length > 0 && (
-              <div className="grid grid-cols-1 gap-x-8 gap-y-12 border-t border-ink-200 pt-12 dark:border-ink-700 sm:grid-cols-2">
-                {rest.map((post) => (
-                  <PostCard key={post.id} post={post} />
-                ))}
-              </div>
-            )}
-          </div>
+          /* Posts are still fetched and rendered on the server; PostSearch is a thin client
+             wrapper that filters the same list, so the page keeps its SSR'd content and search
+             costs no extra request. */
+          <PostSearch posts={posts} />
         )}
       </main>
       <SiteFooter />
