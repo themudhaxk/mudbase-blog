@@ -49,7 +49,7 @@ export default async function CategoryPage({ params }: CategoryPageProps): Promi
         </h1>
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2">
           {posts.map((post) => (
-            <PostCard key={post.id} post={post} />
+            <PostCard key={post._id} post={post} />
           ))}
         </div>
       </main>

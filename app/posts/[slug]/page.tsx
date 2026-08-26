@@ -6,8 +6,7 @@ import { format } from "date-fns";
 import ReactMarkdown from "react-markdown";
 import { showcaseForSlug } from "@/lib/showcases";
 import { ShowcaseLinksBar } from "@/components/showcase-links";
-import remarkGfm from "remark-gfm";
-import rehypeHighlight from "rehype-highlight";
+import { remarkPlugins, rehypePlugins } from "@/lib/markdown";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getPostBySlug, getPublishedPosts } from "@/lib/mudbase";
@@ -110,8 +109,8 @@ export default async function PostPage({ params }: PostPageProps): Promise<React
 
         <div className="prose-mud">
           <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeHighlight]}
+            remarkPlugins={remarkPlugins}
+            rehypePlugins={rehypePlugins}
             components={{ img: MarkdownImage }}
           >
             {content}

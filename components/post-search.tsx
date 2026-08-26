@@ -81,14 +81,14 @@ export function PostSearch({ posts }: { posts: Post[] }): React.JSX.Element {
           {trimmed ? (
             <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2">
               {matches.map((post) => (
-                <PostCard key={post.id} post={post} />
+                <PostCard key={post._id} post={post} />
               ))}
             </div>
           ) : (
             rest.length > 0 && (
               <div className="grid grid-cols-1 gap-x-8 gap-y-12 border-t border-ink-200 pt-12 dark:border-ink-700 sm:grid-cols-2">
                 {rest.map((post) => (
-                  <PostCard key={post.id} post={post} />
+                  <PostCard key={post._id} post={post} />
                 ))}
               </div>
             )

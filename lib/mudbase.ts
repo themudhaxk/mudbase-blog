@@ -3,7 +3,8 @@ const PROJECT_ID = process.env.MUDBASE_PROJECT_ID ?? "6a8b001ccd3ed654823a5732";
 const COLLECTION_ID = process.env.MUDBASE_COLLECTION_ID ?? "6a8b005ccd3ed654823a5743";
 
 export interface Post {
-  id: string;
+  /** Mudbase returns Mongo's `_id`; there is no `id` alias on the wire. */
+  _id: string;
   title: string;
   slug: string;
   excerpt: string;

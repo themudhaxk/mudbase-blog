@@ -1,15 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
+
+/** No-op subscribe: hydration is a one-time transition, never a stream of updates. */
+const noopSubscribe = (): (() => void) => () => {};
 
 export function ThemeToggle(): React.JSX.Element | null {
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // The resolved theme is only known in the browser, so the server and the first client
+  // render must agree on "nothing yet" or hydration mismatches. useSyncExternalStore gives
+  // that with its server snapshot, without the setState-in-an-effect cascade a `mounted`
+  // flag would cause.
+  const mounted = useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false,
+  );
 
   if (!mounted) return null;
 

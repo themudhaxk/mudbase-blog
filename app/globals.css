@@ -75,3 +75,10 @@ body {
 .prose-mud hr {
   @apply my-10 border-ink-200 dark:border-ink-700;
 }
+
+/* Video embeds inserted by the blog admin. Sized by aspect ratio rather than fixed height so
+   they stay 16:9 at every breakpoint instead of letterboxing on narrow screens. */
+.prose-mud iframe,
+.prose-mud video {
+  @apply my-8 aspect-video h-auto w-full rounded-lg border border-ink-200 dark:border-ink-700;
+}
