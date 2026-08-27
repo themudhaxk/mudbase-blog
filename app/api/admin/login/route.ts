@@ -25,7 +25,7 @@ const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms
 export async function POST(request: Request): Promise<NextResponse> {
   const ip = clientIp(request.headers);
 
-  const throttle = checkThrottle(ip);
+  const throttle = await checkThrottle(ip);
   if (throttle.blocked) {
     return NextResponse.json(
       { error: "Too many failed attempts. Try again later." },
@@ -49,7 +49,7 @@ export async function POST(request: Request): Promise<NextResponse> {
   }
 
   if (!(await passwordMatches(password))) {
-    const state = recordFailure(ip);
+    const state = await recordFailure(ip);
     // Slows scripted guessing well before the lockout threshold is reached.
     await sleep(failureDelayMs(state.failures));
     if (state.blocked) {
@@ -61,7 +61,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     return NextResponse.json({ error: "Incorrect password" }, { status: 401 });
   }
 
-  clearFailures(ip);
+  await clearFailures(ip);
   const res = NextResponse.json({ ok: true });
   res.cookies.set(ADMIN_COOKIE, await createSessionToken(), SESSION_COOKIE_OPTIONS);
   return res;

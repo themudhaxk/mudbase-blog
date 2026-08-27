@@ -4,110 +4,110 @@
  * The whole admin is gated by one shared password, so that password is the entire attack
  * surface — and without throttling an attacker gets unlimited, free guesses at it.
  *
- * Two honest caveats about doing this on Vercel:
+ * This counts in Redis, via a small internal endpoint on the Mudbase API, rather than in
+ * process memory. An in-memory counter was tried first and measurably does not work here:
+ * Vercel spreads requests across many short-lived instances, so the count never accumulates —
+ * 30 concurrent wrong passwords against the deployed version produced 30 × 401 and no
+ * throttling at all. A shared store is the only thing that actually counts.
  *
- *  - The counter is per-instance and in-memory. Serverless functions scale out and are
- *    recycled, so a determined attacker spread across enough concurrent instances sees a
- *    higher effective ceiling than the number below, and counts reset on cold start. This
- *    raises the cost of guessing considerably; it is not an absolute cap. Vercel's own
- *    firewall rate-limiting is the durable answer if this ever needs to be one.
- *  - It is keyed on IP, which is neither stable nor unique per person. That is acceptable
- *    here in a way it was not for signup gating: the failure mode is a 15-minute delay on one
- *    internal surface with a known operator, not a stranger being refused an account.
+ * It still keys on IP, which is neither stable nor unique per person. That is acceptable here
+ * in a way it is not for signup gating: the failure mode is a 15-minute wait on one internal
+ * surface with a known operator, not a stranger being refused an account.
+ *
+ * Every failure path fails OPEN. A throttle that is down must not become a lockout on the
+ * surface it protects.
  */
+
+const API_BASE = process.env.MUDBASE_API_BASE ?? "https://api.mudbase.dev";
 
 /** Failures allowed from one address before it is refused for the rest of the window. */
 const MAX_FAILURES = 8;
-const WINDOW_MS = 15 * 60 * 1000;
+const WINDOW_SECONDS = 15 * 60;
+const SCOPE = "blog-admin-login";
 
-/** Bounded so a flood of unique addresses cannot grow this map without limit. */
-const MAX_TRACKED = 10_000;
+/** Bounded so a slow throttle can never hold up a sign-in. */
+const TIMEOUT_MS = 2500;
 
-interface Attempt {
-  count: number;
-  resetAt: number;
+export interface ThrottleState {
+  blocked: boolean;
+  retryAfterSeconds: number;
+  failures: number;
+  /** True when the throttle could not be consulted and the request was allowed through. */
+  degraded: boolean;
 }
 
-const attempts = new Map<string, Attempt>();
+const OPEN: ThrottleState = { blocked: false, retryAfterSeconds: 0, failures: 0, degraded: true };
 
 /**
  * The client address as Vercel determined it.
  *
- * `x-vercel-forwarded-for` is set by Vercel's edge; `x-forwarded-for` is not safe to read
- * leftmost because a client can send it themselves, which would let an attacker mint a fresh
- * throttle bucket per request.
+ * `x-vercel-forwarded-for` is set by Vercel's edge. `x-forwarded-for` is not safe to read
+ * leftmost — a client can send it themselves, which would let an attacker mint a fresh
+ * counter per request, the same way a proxy-supplied address once collapsed every Mudbase
+ * user onto one rate-limit key.
  */
 export function clientIp(headers: Headers): string {
   const vercel = headers.get("x-vercel-forwarded-for");
   if (vercel) return vercel.split(",")[0].trim();
   const real = headers.get("x-real-ip");
   if (real) return real.trim();
-  // Local development only — in production one of the two above is always present.
   return "unknown";
 }
 
-function sweep(now: number): void {
-  for (const [key, attempt] of attempts) {
-    if (attempt.resetAt <= now) attempts.delete(key);
+async function call(body: Record<string, unknown>): Promise<ThrottleState> {
+  const secret = process.env.MUDBASE_INTERNAL_API_KEY;
+  if (!secret) return OPEN;
+
+  try {
+    // Mounted at /internal, not /api/internal (see server.js) — verified against the running
+    // service rather than assumed.
+    const res = await fetch(`${API_BASE}/internal/throttle/consume`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-internal-api-key": secret },
+      body: JSON.stringify({ scope: SCOPE, windowSeconds: WINDOW_SECONDS, limit: MAX_FAILURES, ...body }),
+      cache: "no-store",
+      signal: AbortSignal.timeout(TIMEOUT_MS),
+    });
+    if (!res.ok) return OPEN;
+
+    const json = (await res.json()) as {
+      allowed?: boolean;
+      count?: number;
+      retryAfterSeconds?: number;
+      degraded?: boolean;
+    };
+    return {
+      blocked: json.allowed === false,
+      retryAfterSeconds: json.retryAfterSeconds ?? WINDOW_SECONDS,
+      failures: json.count ?? 0,
+      degraded: json.degraded === true,
+    };
+  } catch {
+    return OPEN;
   }
 }
 
-export interface ThrottleState {
-  blocked: boolean;
-  retryAfterSeconds: number;
-  /** Consecutive failures already recorded for this address. */
-  failures: number;
-}
-
-/** Current state for an address, without recording anything. */
-export function checkThrottle(ip: string): ThrottleState {
-  const now = Date.now();
-  const attempt = attempts.get(ip);
-  if (!attempt || attempt.resetAt <= now) {
-    return { blocked: false, retryAfterSeconds: 0, failures: 0 };
-  }
-  return {
-    blocked: attempt.count >= MAX_FAILURES,
-    retryAfterSeconds: Math.max(1, Math.ceil((attempt.resetAt - now) / 1000)),
-    failures: attempt.count,
-  };
+/** Current state for an address without recording an attempt. */
+export function checkThrottle(ip: string): Promise<ThrottleState> {
+  return call({ identifier: ip, peek: true });
 }
 
 /** Record a failed attempt and return the updated state. */
-export function recordFailure(ip: string): ThrottleState {
-  const now = Date.now();
-  sweep(now);
-
-  // Under a flood of unique addresses, stop tracking new ones rather than grow without
-  // bound. Existing counters keep working, so an attacker cannot evict their own entry.
-  if (!attempts.has(ip) && attempts.size >= MAX_TRACKED) {
-    return { blocked: false, retryAfterSeconds: 0, failures: 0 };
-  }
-
-  const existing = attempts.get(ip);
-  const attempt =
-    existing && existing.resetAt > now ? existing : { count: 0, resetAt: now + WINDOW_MS };
-  attempt.count += 1;
-  attempts.set(ip, attempt);
-
-  return {
-    blocked: attempt.count >= MAX_FAILURES,
-    retryAfterSeconds: Math.max(1, Math.ceil((attempt.resetAt - now) / 1000)),
-    failures: attempt.count,
-  };
+export function recordFailure(ip: string): Promise<ThrottleState> {
+  return call({ identifier: ip });
 }
 
 /** Clear an address's failures. Called on a successful sign-in. */
-export function clearFailures(ip: string): void {
-  attempts.delete(ip);
+export async function clearFailures(ip: string): Promise<void> {
+  await call({ identifier: ip, reset: true });
 }
 
 /**
- * Delay applied before answering a failed attempt, growing with the number of failures.
+ * Delay before answering a failed attempt, growing with the failure count.
  *
- * Even below the lockout threshold this makes scripted guessing far slower, and the cost to a
- * legitimate operator who mistypes once is imperceptible.
+ * Even below the lockout threshold this slows scripted guessing, and costs an operator who
+ * mistypes once almost nothing.
  */
 export function failureDelayMs(failures: number): number {
-  return Math.min(2000, 150 * failures);
+  return Math.min(2000, 150 * Math.max(1, failures));
 }
