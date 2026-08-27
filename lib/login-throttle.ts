@@ -39,14 +39,28 @@ export interface ThrottleState {
 const OPEN: ThrottleState = { blocked: false, retryAfterSeconds: 0, failures: 0, degraded: true };
 
 /**
- * The client address as Vercel determined it.
+ * The real client address, read from the outermost proxy in the chain.
  *
- * `x-vercel-forwarded-for` is set by Vercel's edge. `x-forwarded-for` is not safe to read
- * leftmost — a client can send it themselves, which would let an attacker mint a fresh
- * counter per request, the same way a proxy-supplied address once collapsed every Mudbase
- * user onto one rate-limit key.
+ * blog.mudbase.dev is served client -> Cloudflare -> Vercel, so `x-vercel-forwarded-for` is
+ * whatever Cloudflare's edge presented, not the caller. Measured, not assumed: twelve
+ * concurrent attempts produced counters against six different Cloudflare addresses
+ * (104.23.x, 162.159.x, 172.71.x), none reaching the limit. That is the same failure as the
+ * Fly proxy collapsing every Mudbase user onto one rate-limit key, one layer further out —
+ * and the general lesson is that a forwarded-for header identifies the nearest proxy, never
+ * the client, unless the proxy that set it is the one you actually front.
+ *
+ * `cf-connecting-ip` is set by Cloudflare and overwrites anything a client sends, so it is
+ * authoritative for traffic that arrives through Cloudflare. Traffic that reaches the Vercel
+ * origin directly — the deployment URL bypasses Cloudflare — could forge it; see the note in
+ * README on restricting the origin. The password's entropy, not this counter, is the control
+ * that actually stops guessing.
+ *
+ * `x-forwarded-for` is never read: its leftmost entry is client-settable, which would let an
+ * attacker mint a fresh counter per request.
  */
 export function clientIp(headers: Headers): string {
+  const cloudflare = headers.get("cf-connecting-ip");
+  if (cloudflare) return cloudflare.trim();
   const vercel = headers.get("x-vercel-forwarded-for");
   if (vercel) return vercel.split(",")[0].trim();
   const real = headers.get("x-real-ip");
