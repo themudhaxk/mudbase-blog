@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "verify:markdown": "tsx scripts/verify-markdown.mts"
+    "verify:markdown": "tsx scripts/verify-markdown.mts",
+    "verify:admin": "tsx scripts/verify-admin-access.mts"
   },
   "dependencies": {
     "date-fns": "4.1.0",
