@@ -10,19 +10,19 @@ export function SiteHeader(): React.JSX.Element {
             m
           </span>
           <span className="font-display text-lg font-medium tracking-tight text-ink-950 dark:text-ink-50">
-            Mudbase <span className="text-ink-400">/ blog</span>
+            Mudbase <span className="hidden text-ink-400 sm:inline">/ blog</span>
           </span>
         </Link>
-        <nav className="flex items-center gap-5 text-sm text-ink-600 dark:text-ink-200">
+        <nav className="flex items-center gap-4 text-sm text-ink-600 dark:text-ink-200 sm:gap-5">
           <a
             href="https://www.mudbase.dev"
-            className="hidden transition hover:text-mud-600 dark:hover:text-mud-300 sm:inline"
+            className="transition hover:text-mud-600 dark:hover:text-mud-300"
           >
             Product
           </a>
           <a
             href="https://docs.mudbase.dev"
-            className="hidden transition hover:text-mud-600 dark:hover:text-mud-300 sm:inline"
+            className="transition hover:text-mud-600 dark:hover:text-mud-300"
           >
             Docs
           </a>
