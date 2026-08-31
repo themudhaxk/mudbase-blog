@@ -11,6 +11,7 @@
     "verify:admin": "tsx scripts/verify-admin-access.mts"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^2.0.0",
     "date-fns": "4.1.0",
     "next": "16.3.2",
     "next-themes": "0.4.6",
