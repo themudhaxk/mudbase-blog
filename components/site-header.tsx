@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -6,9 +7,14 @@ export function SiteHeader(): React.JSX.Element {
     <header className="border-b border-ink-200 dark:border-ink-700">
       <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-6">
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="flex h-7 w-7 items-center justify-center rounded-md bg-mud-500 font-mono text-[13px] font-bold text-ink-50">
-            m
-          </span>
+          <Image
+            src="/logo.svg"
+            alt="Mudbase"
+            width={35}
+            height={24}
+            priority
+            className="h-6 w-auto"
+          />
           <span className="font-display text-lg font-medium tracking-tight text-ink-950 dark:text-ink-50">
             Mudbase <span className="hidden text-ink-400 sm:inline">/ blog</span>
           </span>
