@@ -77,7 +77,7 @@ export function PostEditor({ post, categories }: PostEditorProps): React.JSX.Ele
       ...prev,
       title: value,
       // Stop auto-deriving once the author edits the slug by hand, and never rewrite the slug
-      // of a published post — changing it breaks every existing link to that post.
+      // of a published post - changing it breaks every existing link to that post.
       slug: slugTouched || post?.status === "published" ? prev.slug : slugify(value),
     }));
   }
@@ -148,7 +148,7 @@ export function PostEditor({ post, categories }: PostEditorProps): React.JSX.Ele
     setError(null);
 
     if (!draft.title.trim()) return setError("Give the post a title before saving.");
-    if (!draft.slug.trim()) return setError("The post needs a slug — it becomes the URL.");
+    if (!draft.slug.trim()) return setError("The post needs a slug - it becomes the URL.");
     if (status === "published" && !draft.excerpt.trim()) {
       return setError("Published posts need an excerpt; it's the summary shown on the index and in link previews.");
     }
@@ -184,7 +184,7 @@ export function PostEditor({ post, categories }: PostEditorProps): React.JSX.Ele
       router.push("/admin");
       router.refresh();
     } catch {
-      setError("Could not reach the server. Your text is still here — try saving again.");
+      setError("Could not reach the server. Your text is still here - try saving again.");
     } finally {
       setSaving(false);
     }
@@ -459,7 +459,7 @@ function CoverUploadButton({ onUploaded }: { onUploaded: (url: string) => void }
       if (res.ok && body.url) onUploaded(body.url);
       else window.alert(body.error ?? "Upload failed.");
     } catch {
-      window.alert("Upload failed — check your connection and try again.");
+      window.alert("Upload failed - check your connection and try again.");
     } finally {
       setBusy(false);
       if (ref.current) ref.current.value = "";

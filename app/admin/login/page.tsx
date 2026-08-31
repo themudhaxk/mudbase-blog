@@ -33,7 +33,7 @@ function LoginForm(): React.JSX.Element {
         setError(body.error ?? "Sign in failed.");
         return;
       }
-      // `next` is user-controlled, so only same-site paths are honoured — an absolute URL
+      // `next` is user-controlled, so only same-site paths are honoured - an absolute URL
       // here would turn the login page into an open redirect.
       const next = params.get("next");
       router.push(next && next.startsWith("/") && !next.startsWith("//") ? next : "/admin");

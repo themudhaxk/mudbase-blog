@@ -2,11 +2,11 @@
  * Brute-force throttling for the admin login.
  *
  * The whole admin is gated by one shared password, so that password is the entire attack
- * surface — and without throttling an attacker gets unlimited, free guesses at it.
+ * surface - and without throttling an attacker gets unlimited, free guesses at it.
  *
  * This counts in Redis, via a small internal endpoint on the Mudbase API, rather than in
  * process memory. An in-memory counter was tried first and measurably does not work here:
- * Vercel spreads requests across many short-lived instances, so the count never accumulates —
+ * Vercel spreads requests across many short-lived instances, so the count never accumulates -
  * 30 concurrent wrong passwords against the deployed version produced 30 × 401 and no
  * throttling at all. A shared store is the only thing that actually counts.
  *
@@ -45,13 +45,13 @@ const OPEN: ThrottleState = { blocked: false, retryAfterSeconds: 0, failures: 0,
  * whatever Cloudflare's edge presented, not the caller. Measured, not assumed: twelve
  * concurrent attempts produced counters against six different Cloudflare addresses
  * (104.23.x, 162.159.x, 172.71.x), none reaching the limit. That is the same failure as the
- * Fly proxy collapsing every Mudbase user onto one rate-limit key, one layer further out —
+ * Fly proxy collapsing every Mudbase user onto one rate-limit key, one layer further out -
  * and the general lesson is that a forwarded-for header identifies the nearest proxy, never
  * the client, unless the proxy that set it is the one you actually front.
  *
  * `cf-connecting-ip` is set by Cloudflare and overwrites anything a client sends, so it is
  * authoritative for traffic that arrives through Cloudflare. Traffic that reaches the Vercel
- * origin directly — the deployment URL bypasses Cloudflare — could forge it; see the note in
+ * origin directly - the deployment URL bypasses Cloudflare - could forge it; see the note in
  * README on restricting the origin. The password's entropy, not this counter, is the control
  * that actually stops guessing.
  *
@@ -73,7 +73,7 @@ async function call(body: Record<string, unknown>): Promise<ThrottleState> {
   if (!secret) return OPEN;
 
   try {
-    // Mounted at /internal, not /api/internal (see server.js) — verified against the running
+    // Mounted at /internal, not /api/internal (see server.js) - verified against the running
     // service rather than assumed.
     const res = await fetch(`${API_BASE}/internal/throttle/consume`, {
       method: "POST",

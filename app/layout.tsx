@@ -26,11 +26,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://blog.mudbase.dev"),
   title: {
-    template: "%s — Mudbase Blog",
+    template: "%s - Mudbase Blog",
     default: "Mudbase Blog",
   },
   description:
-    "Migration guides, showcase apps, and engineering notes from the team building Mudbase — the backend that also gets you paid.",
+    "Migration guides, showcase apps, and engineering notes from the team building Mudbase - the backend that also gets you paid.",
   openGraph: {
     siteName: "Mudbase Blog",
     type: "website",

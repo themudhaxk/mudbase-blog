@@ -52,11 +52,11 @@ function stripTitleHeading(body: string, title: string): string {
 }
 
 // Routes markdown-embedded images through Next's server-side image proxy instead of
-// linking directly to api.mudbase.dev — a direct cross-origin <img> load is blocked by
+// linking directly to api.mudbase.dev - a direct cross-origin <img> load is blocked by
 // Chrome (net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin) because that endpoint sends a
 // Cross-Origin-Resource-Policy header. The proxy fetches server-side, sidestepping it.
 function proxiedImageSrc(src: string): string {
-  // 1920 must be one of next.config.ts's (default) images.deviceSizes entries — an
+  // 1920 must be one of next.config.ts's (default) images.deviceSizes entries - an
   // arbitrary width is rejected by the optimizer with a 400.
   return `/_next/image?url=${encodeURIComponent(src)}&w=1920&q=75`;
 }

@@ -9,7 +9,7 @@ import type { PluggableList } from "unified";
 /**
  * The single markdown pipeline, shared by the published post page and the admin preview.
  *
- * Both import from here so "what the preview shows" and "what readers get" cannot drift —
+ * Both import from here so "what the preview shows" and "what readers get" cannot drift -
  * a preview built on its own plugin list is a preview that lies.
  */
 
@@ -25,7 +25,7 @@ const EMBED_HOSTS = [
 ];
 
 /**
- * Raw HTML is enabled so the editor's colour and video controls have something to emit —
+ * Raw HTML is enabled so the editor's colour and video controls have something to emit -
  * markdown expresses neither. That makes sanitising mandatory rather than optional: without
  * it, anything ever written into a post body would execute in every reader's browser. The
  * schema is an allowlist, so a tag or attribute not named here is dropped.
@@ -58,7 +58,7 @@ const COLOR_ONLY_STYLE = /^\s*color\s*:\s*(#[0-9a-fA-F]{3,8}|rgba?\([\d\s.,%]+\)
 
 /**
  * hast-util-sanitize allowlists attributes but never parses CSS, so a permitted `style`
- * would otherwise accept anything — `position:fixed` overlays included. The colour picker
+ * would otherwise accept anything - `position:fixed` overlays included. The colour picker
  * only ever emits a single `color:` declaration, so anything else is dropped.
  */
 function clampSpanStyles() {
@@ -97,8 +97,8 @@ function isSafeEmbed(url: string): boolean {
 export const remarkPlugins: PluggableList = [remarkGfm];
 
 // Order matters: raw HTML is parsed first, sanitised immediately after, then the two
-// narrowing passes run, and highlighting is applied last so its class names — which the
-// sanitiser would otherwise have to be loosened to permit — are added to already-clean HTML.
+// narrowing passes run, and highlighting is applied last so its class names - which the
+// sanitiser would otherwise have to be loosened to permit - are added to already-clean HTML.
 export const rehypePlugins: PluggableList = [
   rehypeRaw,
   [rehypeSanitize, schema],

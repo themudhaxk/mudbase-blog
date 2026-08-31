@@ -18,7 +18,7 @@ export function PostSearch({ posts }: { posts: Post[] }): React.JSX.Element {
 
   const matches = useMemo(() => {
     if (!trimmed) return posts;
-    // Title, excerpt and category — not the full body. Matching body text surfaces posts whose
+    // Title, excerpt and category - not the full body. Matching body text surfaces posts whose
     // relevance the reader can't see from the card, which reads as a broken search.
     return posts.filter((p) =>
       [p.title, p.excerpt, p.category].some((f) => (f ?? "").toLowerCase().includes(trimmed)),
@@ -75,7 +75,7 @@ export function PostSearch({ posts }: { posts: Post[] }): React.JSX.Element {
         </p>
       ) : (
         <div className="flex flex-col gap-16">
-          {/* Only lead with the large featured treatment on the unfiltered view — inside a
+          {/* Only lead with the large featured treatment on the unfiltered view - inside a
               result set it implies a ranking that isn't there. */}
           {featured && !trimmed && <PostCard post={featured} featured />}
           {trimmed ? (

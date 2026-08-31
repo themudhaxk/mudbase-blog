@@ -49,7 +49,7 @@ export function MarkdownToolbar({
       }
       onInsert(`\n![${file.name.replace(/\.[^.]+$/, "")}](${body.url})\n`);
     } catch {
-      setUploadError("Upload failed — check your connection and try again.");
+      setUploadError("Upload failed - check your connection and try again.");
     } finally {
       setUploading(false);
       // Clear the input so choosing the same file twice still fires a change event.

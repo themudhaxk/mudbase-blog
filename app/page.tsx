@@ -21,12 +21,12 @@ export default async function HomePage(): Promise<React.JSX.Element> {
           </h1>
           <p className="mt-4 max-w-xl text-[17px] leading-relaxed text-ink-600 dark:text-ink-300">
             Migration guides, real showcase apps, and the engineering decisions behind
-            Mudbase — written the way we&apos;d want to read them, bugs and all.
+            Mudbase - written the way we&apos;d want to read them, bugs and all.
           </p>
         </div>
 
         {posts.length === 0 ? (
-          <p className="text-ink-500">No posts published yet — check back soon.</p>
+          <p className="text-ink-500">No posts published yet - check back soon.</p>
         ) : (
           /* Posts are still fetched and rendered on the server; PostSearch is a thin client
              wrapper that filters the same list, so the page keeps its SSR'd content and search

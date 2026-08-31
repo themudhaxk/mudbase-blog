@@ -91,9 +91,9 @@ export default async function AdminIndexPage(): Promise<React.JSX.Element> {
 }
 
 function formatDate(value: string | undefined): string {
-  if (!value) return "—";
+  if (!value) return "-";
   const parsed = new Date(value);
-  return Number.isNaN(parsed.getTime()) ? "—" : format(parsed, "d MMM yyyy");
+  return Number.isNaN(parsed.getTime()) ? "-" : format(parsed, "d MMM yyyy");
 }
 
 function StatusPill({ status }: { status: string }): React.JSX.Element {

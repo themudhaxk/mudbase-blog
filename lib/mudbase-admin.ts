@@ -4,7 +4,7 @@ import type { Post } from "@/lib/mudbase";
  * Server-only write access to the posts collection.
  *
  * The API key lives here and nowhere else. Every mutation goes through a Next route handler
- * that calls into this module, so the key is never serialised to the browser — a blog admin
+ * that calls into this module, so the key is never serialised to the browser - a blog admin
  * that shipped a write-capable Mudbase key to the client would hand every visitor the ability
  * to edit posts.
  */
@@ -28,7 +28,7 @@ function apiKey(): string {
   const key = process.env.MUDBASE_API_KEY;
   if (!key) {
     throw new AdminApiError(
-      "MUDBASE_API_KEY is not configured — the blog admin cannot write posts.",
+      "MUDBASE_API_KEY is not configured - the blog admin cannot write posts.",
       503,
     );
   }
@@ -81,7 +81,7 @@ interface ListResponse {
   documents?: Post[];
 }
 
-/** Every post including drafts — the public reader only ever sees `status: "published"`. */
+/** Every post including drafts - the public reader only ever sees `status: "published"`. */
 export async function listAllPosts(): Promise<Post[]> {
   const json = await call<ListResponse>(`${dataUrl()}?limit=200`, { method: "GET" });
   const posts = json.data ?? json.items ?? json.documents ?? [];
@@ -152,7 +152,7 @@ async function resolveBucketId(): Promise<string> {
   );
   const buckets = json.buckets ?? [];
   // Cover images are served from /api/files/public/<id>, which only resolves for public
-  // objects — uploading into a private bucket would produce a URL that 403s for readers.
+  // objects - uploading into a private bucket would produce a URL that 403s for readers.
   const target = buckets.find((b) => b.isPublic);
   if (!target) {
     throw new AdminApiError(

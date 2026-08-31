@@ -6,11 +6,11 @@
  * password database, nothing to leak beyond the one secret already in the environment.
  *
  * Built on Web Crypto rather than node:crypto because middleware.ts runs on the Edge Runtime,
- * where the Node module is unavailable — a node:crypto version builds fine and then throws on
+ * where the Node module is unavailable - a node:crypto version builds fine and then throws on
  * the first request that hits the middleware. That is what makes every function here async.
  *
  * Everything is server-only. `BLOG_ADMIN_PASSWORD` and `BLOG_ADMIN_SECRET` must never be given
- * a NEXT_PUBLIC_ prefix — that would compile them into the browser bundle and publish the
+ * a NEXT_PUBLIC_ prefix - that would compile them into the browser bundle and publish the
  * admin password to every visitor.
  */
 
@@ -55,7 +55,7 @@ async function sign(payload: string): Promise<string> {
 /**
  * Compare two strings without leaking their contents through timing.
  *
- * Both sides are HMAC'd first so the comparison always runs over equal-length digests —
+ * Both sides are HMAC'd first so the comparison always runs over equal-length digests -
  * comparing the raw values would make length itself an oracle.
  */
 export async function safeEqual(a: string, b: string): Promise<boolean> {
@@ -97,7 +97,7 @@ export async function verifySessionToken(token: string | undefined): Promise<boo
   try {
     expectedMac = await sign(`${expiresRaw}.${nonce}`);
   } catch {
-    return false; // misconfigured secret — refuse rather than accept
+    return false; // misconfigured secret - refuse rather than accept
   }
   if (!(await safeEqual(mac, expectedMac))) return false;
 

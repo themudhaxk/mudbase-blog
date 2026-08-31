@@ -4,7 +4,7 @@ import { ADMIN_COOKIE, verifySessionToken } from "@/lib/admin-auth";
 /**
  * Keeps unauthenticated visitors out of the admin UI.
  *
- * This is a redirect for a nicer experience, not the authorization boundary — each
+ * This is a redirect for a nicer experience, not the authorization boundary - each
  * /api/admin route handler re-checks the session independently, so a middleware matcher
  * mistake cannot expose a write endpoint.
  */
