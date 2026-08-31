@@ -19,6 +19,9 @@ export function SiteFooter(): React.JSX.Element {
           >
             LinkedIn
           </a>
+          <a href="https://x.com/mudbasedev" className="transition hover:text-mud-600 dark:hover:text-mud-300">
+            X
+          </a>
         </div>
         <p>© {new Date().getUTCFullYear()} Mudbase</p>
       </div>

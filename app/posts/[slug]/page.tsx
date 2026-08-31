@@ -30,15 +30,21 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: {
+      canonical: `/posts/${slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       images: [post.coverImage],
       type: "article",
+      url: `/posts/${slug}`,
       publishedTime: post.publishedAt,
     },
     twitter: {
       card: "summary_large_image",
+      site: "@mudbasedev",
+      creator: "@mudbasedev",
       title: post.title,
       description: post.excerpt,
       images: [post.coverImage],
@@ -76,8 +82,48 @@ export default async function PostPage({ params }: PostPageProps): Promise<React
   const content = stripTitleHeading(post.body, post.title);
   const showcase = showcaseForSlug(post.slug);
 
+  const postUrl = `https://blog.mudbase.dev/posts/${post.slug}`;
+
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.excerpt,
+      image: [post.coverImage],
+      datePublished: post.publishedAt,
+      dateModified: post.updatedAt ?? post.publishedAt,
+      author: { "@type": "Person", name: post.author },
+      publisher: {
+        "@type": "Organization",
+        name: "Mudbase",
+        logo: { "@type": "ImageObject", url: "https://www.mudbase.dev/logo.png" },
+      },
+      url: postUrl,
+      mainEntityOfPage: postUrl,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://blog.mudbase.dev" },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: post.category,
+          item: `https://blog.mudbase.dev/category/${post.category.toLowerCase()}`,
+        },
+        { "@type": "ListItem", position: 3, name: post.title, item: postUrl },
+      ],
+    },
+  ];
+
   return (
     <div className="flex min-h-screen flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <SiteHeader />
       <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-14">
         <Link
@@ -101,7 +147,7 @@ export default async function PostPage({ params }: PostPageProps): Promise<React
           {post.title}
         </h1>
 
-        <div className="relative my-10 aspect-[16/9] overflow-hidden rounded-xl border border-ink-200 bg-ink-100 dark:border-ink-700 dark:bg-ink-900">
+        <div className="relative my-10 aspect-[40/21] overflow-hidden rounded-xl border border-ink-200 bg-ink-100 dark:border-ink-700 dark:bg-ink-900">
           <Image src={post.coverImage} alt="" fill sizes="768px" className="object-cover" priority />
         </div>
 

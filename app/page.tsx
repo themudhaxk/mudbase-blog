@@ -1,9 +1,23 @@
+import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PostSearch } from "@/components/post-search";
 import { getPublishedPosts } from "@/lib/mudbase";
 
 export const revalidate = 300;
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+  // Re-declare siteName/type since a page-level openGraph replaces the layout's object;
+  // url makes Next emit og:url for the home page.
+  openGraph: {
+    url: "/",
+    siteName: "Mudbase Blog",
+    type: "website",
+  },
+};
 
 export default async function HomePage(): Promise<React.JSX.Element> {
   const posts = await getPublishedPosts();

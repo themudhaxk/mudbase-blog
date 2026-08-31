@@ -12,11 +12,7 @@ export function PostCard({ post, featured = false }: PostCardProps): React.JSX.E
   return (
     <article className="grid grid-cols-1 gap-4">
       <Link href={`/posts/${post.slug}`} className="group block">
-        <div
-          className={`relative overflow-hidden rounded-xl border border-ink-200 bg-ink-100 dark:border-ink-700 dark:bg-ink-900 ${
-            featured ? "aspect-[16/9]" : "aspect-[16/10]"
-          }`}
-        >
+        <div className="relative aspect-[40/21] overflow-hidden rounded-xl border border-ink-200 bg-ink-100 dark:border-ink-700 dark:bg-ink-900">
           <Image
             src={post.coverImage}
             alt=""

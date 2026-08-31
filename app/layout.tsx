@@ -31,14 +31,41 @@ export const metadata: Metadata = {
   },
   description:
     "Migration guides, showcase apps, and engineering notes from the team building Mudbase - the backend that also gets you paid.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     siteName: "Mudbase Blog",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
+    site: "@mudbasedev",
+    creator: "@mudbasedev",
   },
 };
+
+// Site-wide structured data. Rendered once in the root layout body so Organization
+// and WebSite markup appears in the initial HTML of every route (server component).
+const siteJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Mudbase",
+    url: "https://www.mudbase.dev",
+    logo: "https://www.mudbase.dev/logo.png",
+    sameAs: [
+      "https://www.linkedin.com/company/mudbase-dev",
+      "https://x.com/mudbasedev",
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Mudbase Blog",
+    url: "https://blog.mudbase.dev",
+  },
+];
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -48,6 +75,10 @@ export default function RootLayout({ children }: RootLayoutProps): React.JSX.Ele
   return (
     <html lang="en" suppressHydrationWarning className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="min-h-screen font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
+        />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

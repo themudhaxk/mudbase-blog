@@ -19,7 +19,27 @@ export async function generateStaticParams(): Promise<Array<{ category: string }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const { category } = await params;
-  return { title: `${capitalize(category)} posts` };
+  const label = capitalize(category);
+  const key = category.toLowerCase();
+
+  return {
+    title: `${label} posts`,
+    description:
+      key === "migration"
+        ? "Migration guides and platform-move write-ups from the Mudbase blog."
+        : key === "showcase"
+          ? "Real showcase apps built on Mudbase, torn down and explained."
+          : `All ${label} posts from the Mudbase blog.`,
+    alternates: {
+      canonical: `/category/${category}`,
+    },
+    openGraph: {
+      title: `${label} posts - Mudbase Blog`,
+      url: `/category/${category}`,
+      siteName: "Mudbase Blog",
+      type: "website",
+    },
+  };
 }
 
 function capitalize(value: string): string {

@@ -11,8 +11,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "monthly",
   }));
 
+  const categories = Array.from(new Set(posts.map((post) => post.category.toLowerCase())));
+  const categoryEntries: MetadataRoute.Sitemap = categories.map((category) => ({
+    url: `${base}/category/${category}`,
+    changeFrequency: "weekly",
+    priority: 0.6,
+  }));
+
   return [
     { url: base, changeFrequency: "daily", priority: 1 },
     ...postEntries,
+    ...categoryEntries,
   ];
 }
