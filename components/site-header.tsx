@@ -1,11 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
+import { getCategories } from "@/lib/mudbase";
 
-export function SiteHeader(): React.JSX.Element {
+export async function SiteHeader(): Promise<React.JSX.Element> {
+  // Derived from the live posts (a cached, revalidated fetch shared with the page), so the nav only
+  // ever lists categories the content actually carries.
+  const categories = await getCategories();
+
   return (
     <header className="border-b border-ink-200 dark:border-ink-700">
-      <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-6">
+      <div className="mx-auto flex max-w-3xl items-center justify-between px-6 pb-4 pt-6">
         <Link href="/" className="flex items-center gap-2.5">
           <Image
             src="/logo.svg"
@@ -41,6 +46,33 @@ export function SiteHeader(): React.JSX.Element {
           <ThemeToggle />
         </nav>
       </div>
+      {categories.length > 0 && (
+        <nav
+          aria-label="Post categories"
+          className="mx-auto max-w-3xl overflow-x-auto px-6 pb-3"
+        >
+          <ul className="flex items-center gap-5 whitespace-nowrap font-mono text-xs uppercase tracking-widest text-ink-500 dark:text-ink-400">
+            <li>
+              <Link
+                href="/"
+                className="transition hover:text-mud-600 dark:hover:text-mud-300"
+              >
+                All
+              </Link>
+            </li>
+            {categories.map((category) => (
+              <li key={category}>
+                <Link
+                  href={`/category/${category.toLowerCase()}`}
+                  className="transition hover:text-mud-600 dark:hover:text-mud-300"
+                >
+                  {category}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
     </header>
   );
 }

@@ -9,7 +9,7 @@ import { ShowcaseLinksBar } from "@/components/showcase-links";
 import { remarkPlugins, rehypePlugins } from "@/lib/markdown";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { getPostBySlug, getPublishedPosts } from "@/lib/mudbase";
+import { getPostBySlug, getPublishedPosts, readingTimeMinutes } from "@/lib/mudbase";
 
 export const revalidate = 300;
 
@@ -141,6 +141,8 @@ export default async function PostPage({ params }: PostPageProps): Promise<React
           <time dateTime={post.publishedAt}>{format(new Date(post.publishedAt), "MMMM d, yyyy")}</time>
           <span className="text-ink-300 dark:text-ink-600">·</span>
           <span>{post.author}</span>
+          <span className="text-ink-300 dark:text-ink-600">·</span>
+          <span>{readingTimeMinutes(post.body)} min read</span>
         </div>
 
         <h1 className="font-display text-3xl font-medium leading-tight text-ink-950 dark:text-ink-50 md:text-4xl">

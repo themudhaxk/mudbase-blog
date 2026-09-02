@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { PostCard } from "@/components/post-card";
-import type { Post } from "@/lib/mudbase";
+import { pickFeaturedPost, type Post } from "@/lib/mudbase";
 
 /**
  * Client-side search over the already-fetched posts.
@@ -25,7 +25,14 @@ export function PostSearch({ posts }: { posts: Post[] }): React.JSX.Element {
     );
   }, [posts, trimmed]);
 
-  const [featured, ...rest] = matches;
+  // The lead slot is a curated outcome post (see pickFeaturedPost), not simply the newest, so the
+  // first thing a reader sees is proof of a real app shipped on Mudbase. `rest` is every other post
+  // in date order, with the featured one removed so it never renders twice.
+  const featured = useMemo(() => pickFeaturedPost(posts), [posts]);
+  const rest = useMemo(
+    () => posts.filter((p) => p._id !== featured?._id),
+    [posts, featured],
+  );
 
   return (
     <>
