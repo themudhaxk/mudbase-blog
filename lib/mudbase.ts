@@ -57,3 +57,50 @@ export async function getPostsByCategory(category: string): Promise<Post[]> {
   const posts = await getPublishedPosts();
   return posts.filter((post) => post.category === category);
 }
+
+/**
+ * The distinct categories, sorted for a stable render, for the header's category navigation.
+ * Derived from the live posts rather than hard-coded so the nav can never advertise a category the
+ * content doesn't carry (or miss one it does).
+ */
+export async function getCategories(): Promise<string[]> {
+  const posts = await getPublishedPosts();
+  return Array.from(new Set(posts.map((post) => post.category))).sort((a, b) =>
+    a.localeCompare(b),
+  );
+}
+
+/**
+ * Curated lead slot for the home page, highest priority first.
+ *
+ * The CMS schema has no `featured` field, so rather than force a schema change we pin the featured
+ * card to a hand-picked outcome post - a real customer shipping on Mudbase - instead of whatever
+ * happens to be newest. Update this list to re-point the lead slot. If none of these slugs are
+ * currently published, `pickFeaturedPost` falls back to the most recent post.
+ */
+export const FEATURED_SLUGS = [
+  "viteg-shipped-to-the-app-stores-on-mudbase",
+  "greatmindsng-consolidating-onto-mudbase",
+] as const;
+
+/** Resolve the curated featured post, falling back to the newest post when none are published. */
+export function pickFeaturedPost(posts: Post[]): Post | undefined {
+  for (const slug of FEATURED_SLUGS) {
+    const match = posts.find((post) => post.slug === slug);
+    if (match) return match;
+  }
+  return posts[0];
+}
+
+/** Words-per-minute used to estimate reading time from a post body. */
+const WORDS_PER_MINUTE = 225;
+
+/**
+ * Estimate reading time in whole minutes from a post's markdown body. The CMS stores no reading
+ * time, so we compute it from word count; markdown syntax is a small, consistent overcount that
+ * washes out at this granularity. Always at least 1 minute.
+ */
+export function readingTimeMinutes(body: string): number {
+  const words = (body ?? "").trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
+}

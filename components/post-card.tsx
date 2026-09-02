@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { format } from "date-fns";
-import type { Post } from "@/lib/mudbase";
+import { readingTimeMinutes, type Post } from "@/lib/mudbase";
 
 interface PostCardProps {
   post: Post;
@@ -42,6 +42,11 @@ export function PostCard({ post, featured = false }: PostCardProps): React.JSX.E
             {post.excerpt}
           </p>
         </Link>
+        <div className="mt-3 flex items-center gap-2 font-mono text-xs text-ink-400 dark:text-ink-500">
+          <span>{post.author || "Mudbase Team"}</span>
+          <span aria-hidden="true">·</span>
+          <span>{readingTimeMinutes(post.body)} min read</span>
+        </div>
       </div>
     </article>
   );
