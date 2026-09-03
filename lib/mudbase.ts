@@ -89,11 +89,15 @@ export async function getCategories(): Promise<string[]> {
  * Curated lead slot for the home page, highest priority first.
  *
  * The CMS schema has no `featured` field, so rather than force a schema change we pin the featured
- * card to a hand-picked outcome post - a real customer shipping on Mudbase - instead of whatever
- * happens to be newest. Update this list to re-point the lead slot. If none of these slugs are
- * currently published, `pickFeaturedPost` falls back to the most recent post.
+ * card to a hand-picked post instead of whatever happens to be newest. Update this list to re-point
+ * the lead slot. If none of these slugs are currently published, `pickFeaturedPost` falls back to
+ * the most recent post.
+ *
+ * The lead is currently the "Best Supabase alternatives" guide - a high-value evergreen SEO piece
+ * we want to greet every visitor, ahead of the customer-outcome stories that back it up.
  */
 export const FEATURED_SLUGS = [
+  "best-supabase-alternatives-in-2026",
   "viteg-shipped-to-the-app-stores-on-mudbase",
   "greatmindsng-consolidating-onto-mudbase",
 ] as const;
