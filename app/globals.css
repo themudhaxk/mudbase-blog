@@ -76,6 +76,52 @@ body {
   @apply my-10 border-ink-200 dark:border-ink-700;
 }
 
+/* Comparison feature-map tables (and any other markdown table). Every published
+   post and the admin preview render through `.prose-mud`, so this is the single
+   place that makes tables read as organized and intentional everywhere - current
+   posts and future ones alike. The table is wrapped by a `.prose-table-wrap`
+   scroll container (see lib/markdown-components.tsx) so a wide feature map scrolls
+   within its own bounds on narrow screens instead of forcing the whole page to
+   scroll. The header, border, padding, and zebra rules target the bare `<table>`
+   directly, so a table still reads as a styled table even without the wrapper.
+   All colors are ink/mud theme tokens so light and dark stay in parity. */
+.prose-table-wrap {
+  @apply my-8 w-full overflow-x-auto rounded-lg border border-ink-200 dark:border-ink-700;
+}
+
+.prose-mud table {
+  @apply w-full border-collapse text-left text-[0.9rem] leading-[1.6];
+  /* Floor the width so columns keep breathing room and the wrapper scrolls
+     horizontally on mobile rather than crushing cells. */
+  min-width: 34rem;
+}
+
+.prose-mud thead {
+  @apply bg-ink-100 dark:bg-ink-800;
+}
+
+.prose-mud th {
+  @apply border-b border-ink-200 px-4 py-3 text-left align-top font-display text-sm font-semibold text-ink-950 dark:border-ink-700 dark:text-ink-50;
+}
+
+.prose-mud td {
+  @apply border-b border-ink-100 px-4 py-3 align-top leading-[1.55] text-ink-800 dark:border-ink-800 dark:text-ink-200;
+}
+
+.prose-mud tbody tr:nth-child(even) {
+  @apply bg-ink-50/70 dark:bg-ink-900/40;
+}
+
+.prose-mud tbody tr:last-child td {
+  @apply border-b-0;
+}
+
+/* Inline code inside a cell should not wrap mid-token and widen the row oddly. */
+.prose-mud th code,
+.prose-mud td code {
+  @apply whitespace-nowrap;
+}
+
 /* Video embeds inserted by the blog admin. Sized by aspect ratio rather than fixed height so
    they stay 16:9 at every breakpoint instead of letterboxing on narrow screens. */
 .prose-mud iframe,

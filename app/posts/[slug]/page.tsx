@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import { showcaseForSlug } from "@/lib/showcases";
 import { ShowcaseLinksBar } from "@/components/showcase-links";
 import { remarkPlugins, rehypePlugins } from "@/lib/markdown";
+import { sharedMarkdownComponents } from "@/lib/markdown-components";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { coverImageFor, getPostBySlug, getPublishedPosts, readingTimeMinutes } from "@/lib/mudbase";
@@ -169,7 +170,7 @@ export default async function PostPage({ params }: PostPageProps): Promise<React
           <ReactMarkdown
             remarkPlugins={remarkPlugins}
             rehypePlugins={rehypePlugins}
-            components={{ img: MarkdownImage }}
+            components={{ ...sharedMarkdownComponents, img: MarkdownImage }}
           >
             {content}
           </ReactMarkdown>

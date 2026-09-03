@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { remarkPlugins, rehypePlugins } from "@/lib/markdown";
+import { sharedMarkdownComponents } from "@/lib/markdown-components";
 import { MarkdownToolbar } from "@/components/admin/markdown-toolbar";
 import type { Post } from "@/lib/mudbase";
 
@@ -414,7 +415,11 @@ export function PostEditor({ post, categories }: PostEditorProps): React.JSX.Ele
             <div className="min-h-[540px] overflow-y-auto rounded-b-lg border border-ink-200 bg-white p-6 dark:border-ink-700 dark:bg-ink-900">
               <div className="prose-mud">
                 {draft.body.trim() ? (
-                  <ReactMarkdown remarkPlugins={remarkPlugins} rehypePlugins={rehypePlugins}>
+                  <ReactMarkdown
+                    remarkPlugins={remarkPlugins}
+                    rehypePlugins={rehypePlugins}
+                    components={sharedMarkdownComponents}
+                  >
                     {draft.body}
                   </ReactMarkdown>
                 ) : (

@@ -21,6 +21,19 @@ const SWATCHES = [
   { name: "Grey", value: "#6b7280" },
 ];
 
+/**
+ * A ready-made GFM table an author can drop in and edit, so a proper comparison
+ * table takes no knowledge of the pipe-and-dash syntax. Blank lines around it keep
+ * the table a standalone block wherever the caret sits.
+ */
+const TABLE_TEMPLATE = `
+| Feature | Mudbase | Alternative |
+| --- | --- | --- |
+| Row one | Yes | No |
+| Row two | Included | Add-on |
+| Row three | Built in | Manual |
+`;
+
 const BTN =
   "rounded border border-ink-200 bg-white px-2 py-1 text-xs font-medium text-ink-700 transition hover:border-mud-400 hover:text-mud-600 disabled:cursor-not-allowed disabled:opacity-50 dark:border-ink-700 dark:bg-ink-900 dark:text-ink-200 dark:hover:border-mud-500 dark:hover:text-mud-300";
 
@@ -122,6 +135,9 @@ export function MarkdownToolbar({
         onClick={() => onInsert("\n```\ncode block\n```\n")}
       >
         Code block
+      </button>
+      <button type="button" className={BTN} disabled={disabled} onClick={() => onInsert(TABLE_TEMPLATE)}>
+        Table
       </button>
       <button type="button" className={BTN} disabled={disabled} onClick={() => onInsert("\n---\n")}>
         Divider
