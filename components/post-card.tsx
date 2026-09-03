@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { format } from "date-fns";
-import { readingTimeMinutes, type Post } from "@/lib/mudbase";
+import { coverImageFor, readingTimeMinutes, type Post } from "@/lib/mudbase";
 
 interface PostCardProps {
   post: Post;
@@ -14,7 +14,7 @@ export function PostCard({ post, featured = false }: PostCardProps): React.JSX.E
       <Link href={`/posts/${post.slug}`} className="group block">
         <div className="relative aspect-[40/21] overflow-hidden rounded-xl border border-ink-200 bg-ink-100 dark:border-ink-700 dark:bg-ink-900">
           <Image
-            src={post.coverImage}
+            src={coverImageFor(post)}
             alt=""
             fill
             sizes={featured ? "100vw" : "(min-width: 768px) 50vw, 100vw"}

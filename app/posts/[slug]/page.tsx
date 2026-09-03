@@ -9,7 +9,14 @@ import { ShowcaseLinksBar } from "@/components/showcase-links";
 import { remarkPlugins, rehypePlugins } from "@/lib/markdown";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { getPostBySlug, getPublishedPosts, readingTimeMinutes } from "@/lib/mudbase";
+import { coverImageFor, getPostBySlug, getPublishedPosts, readingTimeMinutes } from "@/lib/mudbase";
+
+const SITE_ORIGIN = "https://blog.mudbase.dev";
+
+/** Social/JSON-LD images must be absolute; a relative fallback path is resolved against the site origin. */
+function absoluteCover(cover: string): string {
+  return cover.startsWith("/") ? `${SITE_ORIGIN}${cover}` : cover;
+}
 
 export const revalidate = 300;
 
@@ -27,6 +34,8 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   const post = await getPostBySlug(slug);
   if (!post) return { title: "Post not found" };
 
+  const cover = absoluteCover(coverImageFor(post));
+
   return {
     title: post.title,
     description: post.excerpt,
@@ -36,7 +45,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      images: [post.coverImage],
+      images: [cover],
       type: "article",
       url: `/posts/${slug}`,
       publishedTime: post.publishedAt,
@@ -47,7 +56,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       creator: "@mudbasedev",
       title: post.title,
       description: post.excerpt,
-      images: [post.coverImage],
+      images: [cover],
     },
   };
 }
@@ -81,6 +90,7 @@ export default async function PostPage({ params }: PostPageProps): Promise<React
 
   const content = stripTitleHeading(post.body, post.title);
   const showcase = showcaseForSlug(post.slug);
+  const cover = coverImageFor(post);
 
   const postUrl = `https://blog.mudbase.dev/posts/${post.slug}`;
 
@@ -90,7 +100,7 @@ export default async function PostPage({ params }: PostPageProps): Promise<React
       "@type": "BlogPosting",
       headline: post.title,
       description: post.excerpt,
-      image: [post.coverImage],
+      image: [absoluteCover(cover)],
       datePublished: post.publishedAt,
       dateModified: post.updatedAt ?? post.publishedAt,
       author: { "@type": "Person", name: post.author },
@@ -150,7 +160,7 @@ export default async function PostPage({ params }: PostPageProps): Promise<React
         </h1>
 
         <div className="relative my-10 aspect-[40/21] overflow-hidden rounded-xl border border-ink-200 bg-ink-100 dark:border-ink-700 dark:bg-ink-900">
-          <Image src={post.coverImage} alt="" fill sizes="768px" className="object-cover" priority />
+          <Image src={cover} alt="" fill sizes="768px" className="object-cover" priority />
         </div>
 
         {showcase && <ShowcaseLinksBar links={showcase} />}
