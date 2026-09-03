@@ -18,6 +18,21 @@ export interface Post {
   updatedAt?: string;
 }
 
+/**
+ * Fallback cover, used when a post has no coverImage of its own. Without this a missing cover
+ * is passed straight to next/image, whose `src` is required: an empty value throws at render
+ * and takes the whole post page (and any listing that includes the post) down. Every render
+ * path resolves its cover through coverImageFor() so a coverless post degrades to a branded
+ * placeholder instead of a broken page. Lives in public/, so it is a plain same-origin asset.
+ */
+export const DEFAULT_COVER_IMAGE = "/default-cover.png";
+
+/** The cover to render for a post: its own image if set, otherwise the branded fallback. */
+export function coverImageFor(post: Pick<Post, "coverImage">): string {
+  const cover = post.coverImage?.trim();
+  return cover ? cover : DEFAULT_COVER_IMAGE;
+}
+
 interface MudbaseListResponse<T> {
   data?: T[];
   items?: T[];
