@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { PostCard } from "@/components/post-card";
 import { getPostsByCategory, getPublishedPosts } from "@/lib/mudbase";
 
-export const revalidate = 300;
+export const revalidate = 86400;
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;

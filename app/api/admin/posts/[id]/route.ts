@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/require-admin";
 import { AdminApiError, deletePost, updatePost, type PostInput } from "@/lib/mudbase-admin";
@@ -13,7 +14,11 @@ export async function PATCH(
   try {
     const { id } = await params;
     const input = (await request.json()) as Partial<PostInput>;
-    return NextResponse.json({ post: await updatePost(id, input) });
+    const post = await updatePost(id, input);
+    revalidatePath("/");
+    if (input.slug) revalidatePath(`/posts/${input.slug}`);
+    if (input.category) revalidatePath(`/category/${input.category}`);
+    return NextResponse.json({ post });
   } catch (e) {
     const err = e as AdminApiError;
     return NextResponse.json(
@@ -32,6 +37,7 @@ export async function DELETE(
   try {
     const { id } = await params;
     await deletePost(id);
+    revalidatePath("/");
     return NextResponse.json({ ok: true });
   } catch (e) {
     const err = e as AdminApiError;

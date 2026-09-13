@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { PostSearch } from "@/components/post-search";
 import { getPublishedPosts } from "@/lib/mudbase";
 
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   alternates: {

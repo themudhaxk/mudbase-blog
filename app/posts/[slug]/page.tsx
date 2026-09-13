@@ -19,7 +19,7 @@ function absoluteCover(cover: string): string {
   return cover.startsWith("/") ? `${SITE_ORIGIN}${cover}` : cover;
 }
 
-export const revalidate = 300;
+export const revalidate = 86400;
 
 interface PostPageProps {
   params: Promise<{ slug: string }>;
