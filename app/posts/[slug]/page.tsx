@@ -139,7 +139,7 @@ export default async function PostPage({ params }: PostPageProps): Promise<React
       <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-14">
         <Link
           href="/"
-          className="mb-8 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wide text-ink-400 transition hover:text-mud-600 dark:hover:text-mud-300"
+          className="mb-8 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wide text-ink-400 transition hover:text-mud-600 dark:text-ink-300 dark:hover:text-mud-300"
         >
           ← All posts
         </Link>
@@ -148,11 +148,11 @@ export default async function PostPage({ params }: PostPageProps): Promise<React
           <Link href={`/category/${post.category.toLowerCase()}`} className="hover:text-clay-500">
             {post.category}
           </Link>
-          <span className="text-ink-300 dark:text-ink-600">·</span>
+          <span aria-hidden="true" className="text-ink-300 dark:text-ink-600">·</span>
           <time dateTime={post.publishedAt}>{format(new Date(post.publishedAt), "MMMM d, yyyy")}</time>
-          <span className="text-ink-300 dark:text-ink-600">·</span>
+          <span aria-hidden="true" className="text-ink-300 dark:text-ink-600">·</span>
           <span>{post.author}</span>
-          <span className="text-ink-300 dark:text-ink-600">·</span>
+          <span aria-hidden="true" className="text-ink-300 dark:text-ink-600">·</span>
           <span>{readingTimeMinutes(post.body)} min read</span>
         </div>
 
