@@ -59,7 +59,7 @@ export function PostEditor({ post, categories }: PostEditorProps): React.JSX.Ele
     body: post?.body ?? "",
     coverImage: post?.coverImage ?? "",
     category: post?.category ?? categories[0] ?? "Engineering",
-    author: post?.author ?? "Mudbase",
+    author: post?.author ?? "Mudbase Team",
     status: post?.status === "published" ? "published" : "draft",
     publishedAt: toDateInput(post?.publishedAt),
   });
