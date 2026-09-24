@@ -11,6 +11,7 @@ import { sharedMarkdownComponents } from "@/lib/markdown-components";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { coverImageFor, getPostBySlug, getPublishedPosts, readingTimeMinutes } from "@/lib/mudbase";
+import { PageViewTracker } from "@/components/page-view-tracker";
 
 const SITE_ORIGIN = "https://blog.mudbase.dev";
 
@@ -135,6 +136,7 @@ export default async function PostPage({ params }: PostPageProps): Promise<React
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <PageViewTracker postId={post._id} />
       <SiteHeader />
       <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-14">
         <Link
