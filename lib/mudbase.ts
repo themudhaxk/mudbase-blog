@@ -47,20 +47,53 @@ function extractList<T>(json: MudbaseListResponse<T>): T[] {
   return json.data ?? json.items ?? json.documents ?? [];
 }
 
+/** Total retry attempts after the initial fetch (3 attempts total: 1 initial + 2 retries). */
+const FETCH_RETRIES = 2;
+/** Base delay in ms for exponential backoff; attempt n waits n * RETRY_BASE_MS before retrying. */
+const RETRY_BASE_MS = 500;
+
+function retryDelay(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/**
+ * Fetches all published posts from the API with retry and graceful degradation.
+ *
+ * Up to FETCH_RETRIES retries are attempted with linear backoff on any non-2xx response or
+ * network error. If all attempts fail, an empty array is returned and the error is logged to
+ * stderr so callers always get a renderable result rather than a hard server error.
+ */
 export async function getPublishedPosts(): Promise<Post[]> {
   const filter = encodeURIComponent(JSON.stringify({ status: "published" }));
   const url = `${dataUrl()}?filter=${filter}&limit=100&sort=-publishedAt`;
 
-  const res = await fetch(url, { next: { revalidate: 300 } });
-  if (!res.ok) {
-    throw new Error(`Failed to load posts: ${res.status}`);
+  let lastStatus = 0;
+
+  for (let attempt = 0; attempt <= FETCH_RETRIES; attempt++) {
+    if (attempt > 0) {
+      await retryDelay(RETRY_BASE_MS * attempt);
+    }
+    try {
+      const res = await fetch(url, { next: { revalidate: 300 } });
+      if (!res.ok) {
+        lastStatus = res.status;
+        continue;
+      }
+      const json = (await res.json()) as MudbaseListResponse<Post>;
+      const posts = extractList(json);
+      return posts
+        .slice()
+        .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1));
+    } catch {
+      // network error or response parse failure; will retry if attempts remain
+    }
   }
 
-  const json = (await res.json()) as MudbaseListResponse<Post>;
-  const posts = extractList(json);
-  return posts
-    .slice()
-    .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1));
+  console.error(
+    `[mudbase] getPublishedPosts: all ${FETCH_RETRIES + 1} attempts failed` +
+      (lastStatus ? ` (last HTTP ${lastStatus})` : ""),
+  );
+  return [];
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {

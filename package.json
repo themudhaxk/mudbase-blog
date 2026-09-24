@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "verify:markdown": "tsx scripts/verify-markdown.mts",
-    "verify:admin": "tsx scripts/verify-admin-access.mts"
+    "verify:admin": "tsx scripts/verify-admin-access.mts",
+    "verify:resilience": "tsx scripts/verify-resilience.mts"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",
