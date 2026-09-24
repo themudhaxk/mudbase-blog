@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { format } from "date-fns";
 import { AdminShell } from "@/components/admin/admin-shell";
+import { PostRowActions } from "@/components/admin/post-row-actions";
 import { AdminApiError, listAllPosts } from "@/lib/mudbase-admin";
 import type { Post } from "@/lib/mudbase";
 
@@ -59,6 +60,7 @@ export default async function AdminIndexPage(): Promise<React.JSX.Element> {
                 <th className="px-4 py-2.5 font-semibold">Category</th>
                 <th className="px-4 py-2.5 font-semibold">Date</th>
                 <th className="px-4 py-2.5 font-semibold">Status</th>
+                <th className="px-4 py-2.5 font-semibold">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-ink-200 bg-white dark:divide-ink-800 dark:bg-ink-900/40">
@@ -79,6 +81,9 @@ export default async function AdminIndexPage(): Promise<React.JSX.Element> {
                   </td>
                   <td className="px-4 py-3">
                     <StatusPill status={post.status} />
+                  </td>
+                  <td className="px-4 py-3">
+                    <PostRowActions id={post._id} title={post.title || "(untitled)"} />
                   </td>
                 </tr>
               ))}
