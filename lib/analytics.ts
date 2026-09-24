@@ -12,7 +12,12 @@
  */
 
 const API_BASE = process.env.MUDBASE_API_BASE ?? "https://api.mudbase.dev";
-const PROJECT_ID = process.env.MUDBASE_PROJECT_ID ?? "6a8b001ccd3ed654823a5732";
+
+function projectId(): string {
+  const id = process.env.MUDBASE_PROJECT_ID;
+  if (!id) throw new Error("MUDBASE_PROJECT_ID is not configured");
+  return id;
+}
 
 function pvCollectionId(): string {
   const id = process.env.MUDBASE_PAGEVIEWS_COLLECTION_ID;
@@ -27,7 +32,7 @@ function apiKey(): string {
 }
 
 function dataUrl(docId?: string): string {
-  const base = `${API_BASE}/api/data/projects/${PROJECT_ID}/collections/${pvCollectionId()}/data`;
+  const base = `${API_BASE}/api/data/projects/${projectId()}/collections/${pvCollectionId()}/data`;
   return docId ? `${base}/${encodeURIComponent(docId)}` : base;
 }
 
