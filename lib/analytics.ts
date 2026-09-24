@@ -145,6 +145,13 @@ export interface SiteAnalytics {
   daily: { date: string; count: number }[];
 }
 
+export interface PerPostSummary {
+  postId: string;
+  totalViews: number;
+  /** Sparse: only dates with at least one view. Caller fills gaps when rendering. */
+  trend30d: { date: string; count: number }[];
+}
+
 /**
  * Return a daily breakdown of all pageviews across all posts for a date range.
  *
@@ -183,4 +190,42 @@ export async function getSiteAnalytics(from?: string, to?: string): Promise<Site
   const totalViews = daily.reduce((sum, d) => sum + d.count, 0);
 
   return { from: fromDate!, to: toDate, totalViews, daily };
+}
+
+/**
+ * Fetch all pageview buckets once and compute per-post totals + 30-day trends.
+ *
+ * Returns a map keyed by postId so the analytics page can join against the post list
+ * without making N individual requests.
+ *
+ * All-time totals include every bucket; 30-day trend is sparse (zero-view dates omitted).
+ */
+export async function getAllPostsAnalytics(): Promise<Map<string, PerPostSummary>> {
+  const listUrl = `${dataUrl()}?limit=5000`;
+  const buckets = extractList(await apiFetch<ListResponse>(listUrl, { method: "GET" }));
+
+  const now = new Date();
+  const cutoff = new Date(now);
+  cutoff.setUTCDate(cutoff.getUTCDate() - 29);
+  const cutoffStr = cutoff.toISOString().slice(0, 10);
+
+  // Group buckets by postId
+  const byPost = new Map<string, PageviewBucket[]>();
+  for (const b of buckets) {
+    const list = byPost.get(b.postId) ?? [];
+    list.push(b);
+    byPost.set(b.postId, list);
+  }
+
+  const result = new Map<string, PerPostSummary>();
+  for (const [postId, postBuckets] of byPost) {
+    const totalViews = postBuckets.reduce((sum, b) => sum + (b.count ?? 0), 0);
+    const trend30d = postBuckets
+      .filter((b) => b.date >= cutoffStr)
+      .sort((a, b) => a.date.localeCompare(b.date))
+      .map((b) => ({ date: b.date, count: b.count }));
+    result.set(postId, { postId, totalViews, trend30d });
+  }
+
+  return result;
 }

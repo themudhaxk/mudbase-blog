@@ -22,6 +22,12 @@ export function AdminShell({ children }: { children: ReactNode }): React.JSX.Ele
             Blog admin
           </Link>
           <nav className="flex items-center gap-4 text-sm">
+            <Link
+              href="/admin/analytics"
+              className="text-ink-600 hover:text-mud-600 dark:text-ink-300"
+            >
+              Analytics
+            </Link>
             <Link href="/" className="text-ink-600 hover:text-mud-600 dark:text-ink-300">
               View blog
             </Link>
