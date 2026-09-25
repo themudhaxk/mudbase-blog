@@ -1,79 +1,78 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="900" height="440" role="img" aria-label="Cost and architecture comparison: MongoDB Atlas versus self-hosted on Fly.io">
-  <rect width="900" height="440" fill="#0D1F14"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" role="img" aria-label="Cost and architecture comparison: MongoDB Atlas versus self-hosted on Fly.io">
+  <rect width="900" height="460" fill="#0D1F14"/>
   <pattern id="g3" width="30" height="30" patternUnits="userSpaceOnUse">
     <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1d3a22" stroke-width="0.4"/>
   </pattern>
-  <rect width="900" height="440" fill="url(#g3)" opacity="0.5"/>
+  <rect width="900" height="460" fill="url(#g3)" opacity="0.5"/>
 
   <rect x="0" y="0" width="900" height="3" fill="#14B8A6"/>
-  <text x="450" y="32" font-family="'Courier New', monospace" font-size="14" fill="#14B8A6" text-anchor="middle" letter-spacing="2">BEFORE vs AFTER: COST AND ARCHITECTURE</text>
-  <line x1="50" y1="45" x2="850" y2="45" stroke="#1d3a22" stroke-width="1"/>
+  <text x="450" y="32" font-family="'Courier New', monospace" font-size="16" fill="#14B8A6" text-anchor="middle" letter-spacing="2">BEFORE vs AFTER: COST AND ARCHITECTURE</text>
+  <line x1="50" y1="48" x2="850" y2="48" stroke="#1d3a22" stroke-width="1"/>
 
   <!-- BEFORE column -->
-  <rect x="50" y="60" width="360" height="340" rx="12" fill="#140a08" stroke="#D4602A" stroke-width="1.5"/>
+  <rect x="50" y="62" width="360" height="356" rx="12" fill="#140a08" stroke="#D4602A" stroke-width="1.5"/>
   <!-- Column header -->
-  <rect x="50" y="60" width="360" height="38" rx="12" fill="#D4602A" opacity="0.2"/>
-  <rect x="50" y="86" width="360" height="12" fill="#D4602A" opacity="0.2"/>
-  <text x="230" y="84" font-family="'Courier New', monospace" font-size="13" font-weight="bold" fill="#D4602A" text-anchor="middle" letter-spacing="2">MONGODB ATLAS</text>
+  <rect x="50" y="62" width="360" height="40" rx="12" fill="#D4602A" opacity="0.2"/>
+  <rect x="50" y="90" width="360" height="12" fill="#D4602A" opacity="0.2"/>
+  <text x="230" y="88" font-family="'Courier New', monospace" font-size="16" font-weight="bold" fill="#D4602A" text-anchor="middle" letter-spacing="2">MONGODB ATLAS</text>
 
-  <!-- Rows -->
-  <!-- Billing model -->
-  <rect x="70" y="112" width="320" height="48" rx="6" fill="#1a0e0a" stroke="#3a1a10" stroke-width="1"/>
-  <text x="90" y="131" font-family="'Courier New', monospace" font-size="10" fill="#8a6a5a">BILLING MODEL</text>
-  <text x="90" y="148" font-family="Georgia, serif" font-size="12" fill="#e4b4a4">Per cluster size, regardless of usage</text>
+  <!-- Row: Billing model -->
+  <rect x="70" y="116" width="320" height="52" rx="6" fill="#1a0e0a" stroke="#3a1a10" stroke-width="1"/>
+  <text x="90" y="136" font-family="'Courier New', monospace" font-size="14" fill="#8a6a5a">BILLING MODEL</text>
+  <text x="90" y="154" font-family="Georgia, serif" font-size="14" fill="#e4b4a4">Per cluster, regardless of use</text>
 
-  <!-- Idle DB cost -->
-  <rect x="70" y="168" width="320" height="48" rx="6" fill="#1a0e0a" stroke="#3a1a10" stroke-width="1"/>
-  <text x="90" y="187" font-family="'Courier New', monospace" font-size="10" fill="#8a6a5a">IDLE DATABASES</text>
-  <text x="90" y="204" font-family="Georgia, serif" font-size="12" fill="#e4b4a4">Full cluster price for near-zero traffic</text>
+  <!-- Row: Idle DB cost -->
+  <rect x="70" y="176" width="320" height="52" rx="6" fill="#1a0e0a" stroke="#3a1a10" stroke-width="1"/>
+  <text x="90" y="196" font-family="'Courier New', monospace" font-size="14" fill="#8a6a5a">IDLE DATABASES</text>
+  <text x="90" y="214" font-family="Georgia, serif" font-size="14" fill="#e4b4a4">Full price for idle databases</text>
 
-  <!-- Ops responsibility -->
-  <rect x="70" y="224" width="320" height="48" rx="6" fill="#1a0e0a" stroke="#3a1a10" stroke-width="1"/>
-  <text x="90" y="243" font-family="'Courier New', monospace" font-size="10" fill="#8a6a5a">OPS RESPONSIBILITY</text>
-  <text x="90" y="260" font-family="Georgia, serif" font-size="12" fill="#e4b4a4">Vendor-managed (you pay for it)</text>
+  <!-- Row: Ops responsibility -->
+  <rect x="70" y="236" width="320" height="52" rx="6" fill="#1a0e0a" stroke="#3a1a10" stroke-width="1"/>
+  <text x="90" y="256" font-family="'Courier New', monospace" font-size="14" fill="#8a6a5a">OPS RESPONSIBILITY</text>
+  <text x="90" y="274" font-family="Georgia, serif" font-size="14" fill="#e4b4a4">Vendor-managed, you pay for it</text>
 
-  <!-- Isolation -->
-  <rect x="70" y="280" width="320" height="48" rx="6" fill="#1a0e0a" stroke="#3a1a10" stroke-width="1"/>
-  <text x="90" y="299" font-family="'Courier New', monospace" font-size="10" fill="#8a6a5a">MULTI-APP ISOLATION</text>
-  <text x="90" y="316" font-family="Georgia, serif" font-size="12" fill="#e4b4a4">Multiple clusters or expensive shared tier</text>
+  <!-- Row: Isolation -->
+  <rect x="70" y="296" width="320" height="52" rx="6" fill="#1a0e0a" stroke="#3a1a10" stroke-width="1"/>
+  <text x="90" y="316" font-family="'Courier New', monospace" font-size="14" fill="#8a6a5a">MULTI-APP ISOLATION</text>
+  <text x="90" y="334" font-family="Georgia, serif" font-size="14" fill="#e4b4a4">Multiple clusters required</text>
 
   <!-- Cost stamp -->
-  <rect x="90" y="340" width="280" height="44" rx="8" fill="#1a0a06" stroke="#D4602A" stroke-width="1"/>
-  <text x="230" y="368" font-family="Georgia, serif" font-size="30" font-weight="bold" fill="#D4602A" text-anchor="middle">HIGH COST</text>
+  <rect x="90" y="360" width="280" height="44" rx="8" fill="#1a0a06" stroke="#D4602A" stroke-width="1"/>
+  <text x="230" y="388" font-family="Georgia, serif" font-size="30" font-weight="bold" fill="#D4602A" text-anchor="middle">HIGH COST</text>
 
   <!-- AFTER column -->
-  <rect x="490" y="60" width="360" height="340" rx="12" fill="#080f14" stroke="#14B8A6" stroke-width="1.5"/>
-  <rect x="490" y="60" width="360" height="38" rx="12" fill="#14B8A6" opacity="0.15"/>
-  <rect x="490" y="86" width="360" height="12" fill="#14B8A6" opacity="0.15"/>
-  <text x="670" y="84" font-family="'Courier New', monospace" font-size="13" font-weight="bold" fill="#14B8A6" text-anchor="middle" letter-spacing="2">SELF-HOSTED / FLY.IO</text>
+  <rect x="490" y="62" width="360" height="356" rx="12" fill="#080f14" stroke="#14B8A6" stroke-width="1.5"/>
+  <rect x="490" y="62" width="360" height="40" rx="12" fill="#14B8A6" opacity="0.15"/>
+  <rect x="490" y="90" width="360" height="12" fill="#14B8A6" opacity="0.15"/>
+  <text x="670" y="88" font-family="'Courier New', monospace" font-size="16" font-weight="bold" fill="#14B8A6" text-anchor="middle" letter-spacing="2">SELF-HOSTED / FLY.IO</text>
 
-  <!-- Billing model -->
-  <rect x="510" y="112" width="320" height="48" rx="6" fill="#0a1418" stroke="#1a2e3a" stroke-width="1"/>
-  <text x="530" y="131" font-family="'Courier New', monospace" font-size="10" fill="#4a8a9a">BILLING MODEL</text>
-  <text x="530" y="148" font-family="Georgia, serif" font-size="12" fill="#a4d4e4">Pay for compute, not cluster size</text>
+  <!-- Row: Billing model -->
+  <rect x="510" y="116" width="320" height="52" rx="6" fill="#0a1418" stroke="#1a2e3a" stroke-width="1"/>
+  <text x="530" y="136" font-family="'Courier New', monospace" font-size="14" fill="#4a8a9a">BILLING MODEL</text>
+  <text x="530" y="154" font-family="Georgia, serif" font-size="14" fill="#a4d4e4">Pay for compute, not cluster size</text>
 
-  <!-- Idle DB cost -->
-  <rect x="510" y="168" width="320" height="48" rx="6" fill="#0a1418" stroke="#1a2e3a" stroke-width="1"/>
-  <text x="530" y="187" font-family="'Courier New', monospace" font-size="10" fill="#4a8a9a">IDLE DATABASES</text>
-  <text x="530" y="204" font-family="Georgia, serif" font-size="12" fill="#a4d4e4">Zero extra cost; shared cluster</text>
+  <!-- Row: Idle DB cost -->
+  <rect x="510" y="176" width="320" height="52" rx="6" fill="#0a1418" stroke="#1a2e3a" stroke-width="1"/>
+  <text x="530" y="196" font-family="'Courier New', monospace" font-size="14" fill="#4a8a9a">IDLE DATABASES</text>
+  <text x="530" y="214" font-family="Georgia, serif" font-size="14" fill="#a4d4e4">Zero extra cost; shared cluster</text>
 
-  <!-- Ops responsibility -->
-  <rect x="510" y="224" width="320" height="48" rx="6" fill="#0a1418" stroke="#1a2e3a" stroke-width="1"/>
-  <text x="530" y="243" font-family="'Courier New', monospace" font-size="10" fill="#4a8a9a">OPS RESPONSIBILITY</text>
-  <text x="530" y="260" font-family="Georgia, serif" font-size="12" fill="#a4d4e4">You own it (watchdog + alerts included)</text>
+  <!-- Row: Ops responsibility -->
+  <rect x="510" y="236" width="320" height="52" rx="6" fill="#0a1418" stroke="#1a2e3a" stroke-width="1"/>
+  <text x="530" y="256" font-family="'Courier New', monospace" font-size="14" fill="#4a8a9a">OPS RESPONSIBILITY</text>
+  <text x="530" y="274" font-family="Georgia, serif" font-size="14" fill="#a4d4e4">You own it, watchdog included</text>
 
-  <!-- Isolation -->
-  <rect x="510" y="280" width="320" height="48" rx="6" fill="#0a1418" stroke="#1a2e3a" stroke-width="1"/>
-  <text x="530" y="299" font-family="'Courier New', monospace" font-size="10" fill="#4a8a9a">MULTI-APP ISOLATION</text>
-  <text x="530" y="316" font-family="Georgia, serif" font-size="12" fill="#a4d4e4">One cluster, many DBs, proper auth isolation</text>
+  <!-- Row: Isolation -->
+  <rect x="510" y="296" width="320" height="52" rx="6" fill="#0a1418" stroke="#1a2e3a" stroke-width="1"/>
+  <text x="530" y="316" font-family="'Courier New', monospace" font-size="14" fill="#4a8a9a">MULTI-APP ISOLATION</text>
+  <text x="530" y="334" font-family="Georgia, serif" font-size="14" fill="#a4d4e4">One cluster, many apps, isolated</text>
 
   <!-- Cost stamp -->
-  <rect x="530" y="340" width="280" height="44" rx="8" fill="#061214" stroke="#14B8A6" stroke-width="1"/>
-  <text x="670" y="368" font-family="Georgia, serif" font-size="30" font-weight="bold" fill="#14B8A6" text-anchor="middle">FRACTION OF COST</text>
+  <rect x="530" y="360" width="280" height="44" rx="8" fill="#061214" stroke="#14B8A6" stroke-width="1"/>
+  <text x="670" y="388" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#14B8A6" text-anchor="middle">FRACTION OF COST</text>
 
   <!-- VS divider -->
-  <rect x="415" y="200" width="70" height="40" rx="8" fill="#1a1a1a" stroke="#3a3a3a" stroke-width="1"/>
-  <text x="450" y="226" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#F5F0E4" text-anchor="middle">VS</text>
+  <rect x="415" y="210" width="70" height="40" rx="8" fill="#1a1a1a" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="450" y="236" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#F5F0E4" text-anchor="middle">VS</text>
 
-  <rect x="0" y="437" width="900" height="3" fill="#14B8A6"/>
+  <rect x="0" y="457" width="900" height="3" fill="#14B8A6"/>
 </svg>
