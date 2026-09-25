@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-label="Three-node MongoDB replica set with watchdog process on Fly.io">
+  <rect width="900" height="500" fill="#0D1F14"/>
+  <pattern id="g2" width="30" height="30" patternUnits="userSpaceOnUse">
+    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1d3a22" stroke-width="0.4"/>
+  </pattern>
+  <rect width="900" height="500" fill="url(#g2)" opacity="0.5"/>
+
+  <!-- Title bar -->
+  <rect x="0" y="0" width="900" height="3" fill="#14B8A6"/>
+  <text x="450" y="32" font-family="'Courier New', monospace" font-size="14" fill="#14B8A6" text-anchor="middle" letter-spacing="2">3-NODE REPLICA SET ARCHITECTURE</text>
+  <line x1="50" y1="45" x2="850" y2="45" stroke="#1d3a22" stroke-width="1"/>
+
+  <!-- PRIMARY NODE (center-left) -->
+  <g transform="translate(120, 80)">
+    <!-- Server box -->
+    <rect x="0" y="0" width="180" height="220" rx="10" fill="#0f2218" stroke="#14B8A6" stroke-width="2"/>
+    <!-- Status bar -->
+    <rect x="0" y="0" width="180" height="28" rx="10" fill="#14B8A6" opacity="0.8"/>
+    <rect x="0" y="18" width="180" height="10" fill="#14B8A6" opacity="0.8"/>
+    <text x="90" y="18" font-family="'Courier New', monospace" font-size="11" font-weight="bold" fill="#0D1F14" text-anchor="middle">PRIMARY</text>
+    <!-- Server internals -->
+    <rect x="20" y="40" width="140" height="8" rx="3" fill="#1d3a22"/>
+    <rect x="20" y="54" width="100" height="8" rx="3" fill="#1d3a22"/>
+    <rect x="20" y="68" width="120" height="8" rx="3" fill="#1d3a22"/>
+    <!-- mongod label -->
+    <text x="90" y="100" font-family="'Courier New', monospace" font-size="12" fill="#6b9c7a" text-anchor="middle">mongod</text>
+    <text x="90" y="116" font-family="'Courier New', monospace" font-size="10" fill="#4a6a5a" text-anchor="middle">port 27017</text>
+    <!-- Fly machine label -->
+    <rect x="20" y="135" width="140" height="30" rx="5" fill="#0d1a12" stroke="#1d3a22" stroke-width="1"/>
+    <text x="90" y="153" font-family="'Courier New', monospace" font-size="10" fill="#7B2FBE" text-anchor="middle">fly.io machine</text>
+    <!-- Writes / Reads label -->
+    <rect x="35" y="178" width="50" height="22" rx="4" fill="#14B8A6" opacity="0.2" stroke="#14B8A6" stroke-width="1"/>
+    <text x="60" y="193" font-family="'Courier New', monospace" font-size="9" fill="#14B8A6" text-anchor="middle">WRITES</text>
+    <rect x="95" y="178" width="50" height="22" rx="4" fill="#1d4a2e" stroke="#2a6a40" stroke-width="1"/>
+    <text x="120" y="193" font-family="'Courier New', monospace" font-size="9" fill="#6b9c7a" text-anchor="middle">READS</text>
+  </g>
+
+  <!-- SECONDARY 1 (center-right) -->
+  <g transform="translate(380, 80)">
+    <rect x="0" y="0" width="180" height="220" rx="10" fill="#0f1828" stroke="#4B5BDC" stroke-width="2"/>
+    <rect x="0" y="0" width="180" height="28" rx="10" fill="#4B5BDC" opacity="0.8"/>
+    <rect x="0" y="18" width="180" height="10" fill="#4B5BDC" opacity="0.8"/>
+    <text x="90" y="18" font-family="'Courier New', monospace" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">SECONDARY 1</text>
+    <rect x="20" y="40" width="140" height="8" rx="3" fill="#1a2438"/>
+    <rect x="20" y="54" width="100" height="8" rx="3" fill="#1a2438"/>
+    <rect x="20" y="68" width="120" height="8" rx="3" fill="#1a2438"/>
+    <text x="90" y="100" font-family="'Courier New', monospace" font-size="12" fill="#6b7aaa" text-anchor="middle">mongod</text>
+    <text x="90" y="116" font-family="'Courier New', monospace" font-size="10" fill="#4a5a7a" text-anchor="middle">port 27017</text>
+    <rect x="20" y="135" width="140" height="30" rx="5" fill="#0d1020" stroke="#2a2a4a" stroke-width="1"/>
+    <text x="90" y="153" font-family="'Courier New', monospace" font-size="10" fill="#7B2FBE" text-anchor="middle">fly.io machine</text>
+    <rect x="35" y="178" width="110" height="22" rx="4" fill="#1a2438" stroke="#4B5BDC" stroke-width="1"/>
+    <text x="90" y="193" font-family="'Courier New', monospace" font-size="9" fill="#93c5fd" text-anchor="middle">READS ONLY</text>
+  </g>
+
+  <!-- SECONDARY 2 (far right) -->
+  <g transform="translate(640, 80)">
+    <rect x="0" y="0" width="180" height="220" rx="10" fill="#0f1828" stroke="#4B5BDC" stroke-width="2"/>
+    <rect x="0" y="0" width="180" height="28" rx="10" fill="#4B5BDC" opacity="0.8"/>
+    <rect x="0" y="18" width="180" height="10" fill="#4B5BDC" opacity="0.8"/>
+    <text x="90" y="18" font-family="'Courier New', monospace" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">SECONDARY 2</text>
+    <rect x="20" y="40" width="140" height="8" rx="3" fill="#1a2438"/>
+    <rect x="20" y="54" width="100" height="8" rx="3" fill="#1a2438"/>
+    <rect x="20" y="68" width="120" height="8" rx="3" fill="#1a2438"/>
+    <text x="90" y="100" font-family="'Courier New', monospace" font-size="12" fill="#6b7aaa" text-anchor="middle">mongod</text>
+    <text x="90" y="116" font-family="'Courier New', monospace" font-size="10" fill="#4a5a7a" text-anchor="middle">port 27017</text>
+    <rect x="20" y="135" width="140" height="30" rx="5" fill="#0d1020" stroke="#2a2a4a" stroke-width="1"/>
+    <text x="90" y="153" font-family="'Courier New', monospace" font-size="10" fill="#7B2FBE" text-anchor="middle">fly.io machine</text>
+    <rect x="35" y="178" width="110" height="22" rx="4" fill="#1a2438" stroke="#4B5BDC" stroke-width="1"/>
+    <text x="90" y="193" font-family="'Courier New', monospace" font-size="9" fill="#93c5fd" text-anchor="middle">FAILOVER</text>
+  </g>
+
+  <!-- Replication arrows: PRIMARY -> SECONDARY1 -->
+  <g transform="translate(0,0)">
+    <!-- Arrow from Primary (300,190) to Secondary1 (380,190) -->
+    <line x1="302" y1="185" x2="378" y2="185" stroke="#14B8A6" stroke-width="2" stroke-dasharray="6,3"/>
+    <polygon points="376,178 384,185 376,192" fill="#14B8A6"/>
+    <text x="340" y="175" font-family="'Courier New', monospace" font-size="9" fill="#14B8A6" text-anchor="middle">oplog</text>
+
+    <!-- Arrow from Primary (300,200) to Secondary2 (640,200) via bottom -->
+    <path d="M 300 230 C 300 260 640 260 640 230" fill="none" stroke="#4B5BDC" stroke-width="2" stroke-dasharray="6,3"/>
+    <polygon points="633,223 641,231 649,223" fill="#4B5BDC"/>
+    <text x="470" y="278" font-family="'Courier New', monospace" font-size="9" fill="#4B5BDC" text-anchor="middle">replication</text>
+  </g>
+
+  <!-- WATCHDOG box at bottom-left -->
+  <g transform="translate(60, 330)">
+    <rect x="0" y="0" width="240" height="110" rx="10" fill="#1a1a0a" stroke="#D4602A" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <text x="120" y="22" font-family="'Courier New', monospace" font-size="12" fill="#D4602A" text-anchor="middle" letter-spacing="1">WATCHDOG PROCESS</text>
+    <text x="120" y="42" font-family="'Courier New', monospace" font-size="10" fill="#8a6a3a" text-anchor="middle">runs inside each node</text>
+    <rect x="15" y="52" width="210" height="22" rx="4" fill="#0d0d00" stroke="#4a4a1a" stroke-width="1"/>
+    <text x="120" y="67" font-family="'Courier New', monospace" font-size="9" fill="#c4a040" text-anchor="middle">db.adminCommand("ping") every 30s</text>
+    <text x="120" y="90" font-family="'Courier New', monospace" font-size="9" fill="#6a6a3a" text-anchor="middle">if no response: restart mongod (60s cooldown)</text>
+  </g>
+
+  <!-- Watchdog arrow up to Primary -->
+  <line x1="180" y1="330" x2="210" y2="302" stroke="#D4602A" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <polygon points="203,302 211,294 219,304" fill="#D4602A"/>
+  <text x="155" y="320" font-family="'Courier New', monospace" font-size="9" fill="#D4602A">monitors</text>
+
+  <!-- LOG ROTATION note -->
+  <g transform="translate(400, 330)">
+    <rect x="0" y="0" width="240" height="80" rx="10" fill="#1a0f0a" stroke="#D4602A" stroke-width="1" opacity="0.8"/>
+    <text x="120" y="22" font-family="'Courier New', monospace" font-size="11" fill="#D4602A" text-anchor="middle">LOG ROTATION</text>
+    <text x="120" y="42" font-family="'Courier New', monospace" font-size="9" fill="#8a5a3a" text-anchor="middle">mongod does not self-rotate logs</text>
+    <text x="120" y="58" font-family="'Courier New', monospace" font-size="9" fill="#8a5a3a" text-anchor="middle">cron: rotate weekly, compress</text>
+    <text x="120" y="74" font-family="'Courier New', monospace" font-size="9" fill="#D4602A" text-anchor="middle">unrotated log = full disk = outage</text>
+  </g>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="497" width="900" height="3" fill="#14B8A6"/>
+</svg>
