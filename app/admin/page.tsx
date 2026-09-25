@@ -28,12 +28,20 @@ export default async function AdminIndexPage(): Promise<React.JSX.Element> {
             {published.length} published · {drafts.length} draft{drafts.length === 1 ? "" : "s"}
           </p>
         </div>
-        <Link
-          href="/admin/new"
-          className="rounded bg-mud-600 px-4 py-2 text-sm font-semibold text-white hover:bg-mud-500"
-        >
-          New post
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/admin/analytics"
+            className="rounded border border-ink-200 bg-white px-4 py-2 text-sm font-semibold text-ink-700 hover:border-mud-600 hover:text-mud-600 dark:border-ink-700 dark:bg-ink-900/40 dark:text-ink-300 dark:hover:border-mud-400 dark:hover:text-mud-300"
+          >
+            Analytics
+          </Link>
+          <Link
+            href="/admin/new"
+            className="rounded bg-mud-600 px-4 py-2 text-sm font-semibold text-white hover:bg-mud-500"
+          >
+            New post
+          </Link>
+        </div>
       </div>
 
       {error && (
