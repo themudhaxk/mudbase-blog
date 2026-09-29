@@ -74,7 +74,7 @@ export async function getPublishedPosts(): Promise<Post[]> {
       await retryDelay(RETRY_BASE_MS * attempt);
     }
     try {
-      const res = await fetch(url, { next: { revalidate: 300 } });
+      const res = await fetch(url, { next: { revalidate: 86400, tags: ['posts'] } });
       if (!res.ok) {
         lastStatus = res.status;
         continue;

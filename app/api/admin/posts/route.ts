@@ -1,4 +1,4 @@
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/require-admin";
 import { AdminApiError, createPost, listAllPosts, type PostInput } from "@/lib/mudbase-admin";
@@ -28,9 +28,14 @@ export async function POST(request: Request): Promise<NextResponse> {
       return NextResponse.json({ error: "Title and slug are required" }, { status: 400 });
     }
     const post = await createPost(input);
-    revalidatePath("/");
-    revalidatePath(`/posts/${input.slug}`);
-    revalidatePath(`/category/${input.category}`);
+    try {
+      revalidateTag('posts', { expire: 0 });
+      revalidatePath("/");
+      revalidatePath(`/posts/${input.slug}`);
+      revalidatePath(`/category/${input.category}`);
+    } catch (err) {
+      console.error('[admin] revalidation error after create:', err);
+    }
     return NextResponse.json({ post }, { status: 201 });
   } catch (e) {
     const err = e as AdminApiError;
