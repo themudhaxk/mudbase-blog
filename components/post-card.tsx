@@ -17,7 +17,8 @@ export function PostCard({ post, featured = false }: PostCardProps): React.JSX.E
             src={coverImageFor(post)}
             alt=""
             fill
-            sizes={featured ? "100vw" : "(min-width: 768px) 50vw, 100vw"}
+            priority={featured}
+            sizes={featured ? "(min-width: 768px) 720px, 100vw" : "(min-width: 768px) 360px, 100vw"}
             className="object-cover transition duration-300 group-hover:scale-[1.02]"
           />
         </div>
@@ -45,7 +46,7 @@ export function PostCard({ post, featured = false }: PostCardProps): React.JSX.E
         <div className="mt-3 flex items-center gap-2 font-mono text-xs text-ink-400 dark:text-ink-500">
           <span>{post.author || "Mudbase Team"}</span>
           <span aria-hidden="true">·</span>
-          <span>{readingTimeMinutes(post.body)} min read</span>
+          <span>{post.readingMinutes ?? readingTimeMinutes(post.body)} min read</span>
         </div>
       </div>
     </article>

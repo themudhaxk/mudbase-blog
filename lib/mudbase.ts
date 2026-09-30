@@ -9,6 +9,8 @@ export interface Post {
   slug: string;
   excerpt: string;
   body: string;
+  /** Set by toListPost so list views can drop `body` from the client payload. */
+  readingMinutes?: number;
   coverImage: string;
   category: string;
   author: string;
@@ -155,4 +157,13 @@ const WORDS_PER_MINUTE = 225;
 export function readingTimeMinutes(body: string): number {
   const words = (body ?? "").trim().split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
+}
+
+/**
+ * Listing-page shape: the markdown body is replaced by a precomputed reading time. The home page
+ * hands its posts to a client component, and every post body in that payload ships inline in the
+ * HTML, so the body is dropped before it crosses the server/client boundary.
+ */
+export function toListPost(post: Post): Post {
+  return { ...post, body: "", readingMinutes: readingTimeMinutes(post.body) };
 }
