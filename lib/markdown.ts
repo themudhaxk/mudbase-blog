@@ -99,12 +99,20 @@ export const remarkPlugins: PluggableList = [remarkGfm];
 // Order matters: raw HTML is parsed first, sanitised immediately after, then the two
 // narrowing passes run, and highlighting is applied last so its class names - which the
 // sanitiser would otherwise have to be loosened to permit - are added to already-clean HTML.
+//
+// rehypeHighlight options:
+//   ignoreMissing - silently skip fences with an unregistered language alias rather
+//                   than throwing, so posts with a typo or an unusual label degrade
+//                   gracefully instead of crashing the render.
+//   detect:false  - do not auto-detect language for unlabeled blocks; they stay as
+//                   plain monospace text, which is the right fallback for ASCII
+//                   diagrams and plain output blocks.
 export const rehypePlugins: PluggableList = [
   rehypeRaw,
   [rehypeSanitize, schema],
   clampSpanStyles,
   restrictIframeHosts,
-  rehypeHighlight,
+  [rehypeHighlight, { ignoreMissing: true }],
 ];
 
 /** Build the iframe snippet for a supported video URL, or null if the host is not allowed. */

@@ -61,15 +61,21 @@ body {
 }
 
 .prose-mud pre {
-  @apply my-6 overflow-x-auto rounded-lg border border-ink-200 bg-ink-100 p-4 text-sm dark:border-ink-700 dark:bg-ink-900;
+  /* Code blocks always use the dark navy background regardless of page theme.
+     The CodeBlock wrapper sits outside the <pre> and provides the border/radius;
+     the <pre> itself gets no background or border here - those live on .code-block-wrap. */
+  @apply my-0 overflow-x-auto p-4 text-sm;
+  background: transparent;
 }
 
 .prose-mud code {
-  @apply rounded bg-ink-100 px-1.5 py-0.5 font-mono text-[0.85em] text-clay-600 dark:bg-ink-800 dark:text-clay-400;
+  @apply rounded bg-ink-100 px-1.5 py-0.5 font-mono text-[0.85em] text-clay-500 dark:bg-ink-800 dark:text-clay-400;
 }
 
 .prose-mud pre code {
-  @apply bg-transparent p-0 text-ink-900 dark:text-ink-100;
+  @apply bg-transparent p-0;
+  /* Base code text colour inside a block - token colors override this. */
+  color: #c9cdd6;
 }
 
 .prose-mud hr {
@@ -127,4 +133,241 @@ body {
 .prose-mud iframe,
 .prose-mud video {
   @apply my-8 aspect-video h-auto w-full rounded-lg border border-ink-200 dark:border-ink-700;
+}
+
+/* ===================================================================
+   Code block wrapper (CodeBlock component)
+   The <pre> itself sits inside .code-block-wrap; radius, border and
+   background are owned by the wrapper, not the <pre>, so they don't
+   need to be duplicated and do not depend on light/dark page theme -
+   code blocks are always dark navy.
+   =================================================================== */
+
+.code-block-wrap {
+  @apply relative my-6 overflow-hidden rounded-lg;
+  background: #0a0c10;
+  border: 1px solid #1d212c;
+}
+
+/* Language label + copy button row above the code */
+.code-block-header {
+  @apply flex items-center justify-between px-4 py-2;
+  background: #0d1019;
+  border-bottom: 1px solid #1d212c;
+}
+
+.code-block-lang {
+  @apply font-mono text-[0.7rem] uppercase tracking-widest;
+  color: #6b7280;
+}
+
+/* Copy button */
+.code-block-copy {
+  @apply flex items-center gap-1.5 rounded px-2 py-1 font-mono text-[0.7rem] transition;
+  color: #6b7280;
+  background: transparent;
+  cursor: pointer;
+}
+
+.code-block-copy:hover {
+  color: #9caefb;
+  background: rgba(100, 130, 220, 0.08);
+}
+
+.code-block-copy:focus-visible {
+  @apply outline-none ring-2 ring-mud-500 ring-offset-1;
+  --tw-ring-offset-color: #0a0c10;
+}
+
+.code-copy-text {
+  @apply hidden sm:inline;
+}
+
+/* ===================================================================
+   Syntax highlight token colours (rehype-highlight / highlight.js 11)
+   All colours are chosen to be readable against the #0a0c10 background.
+   =================================================================== */
+
+/* base text (redundant with pre code rule above, kept for specificity) */
+.prose-mud pre .hljs {
+  color: #c9cdd6;
+  background: transparent;
+}
+
+/* comments and block quotes - muted grey */
+.prose-mud pre .hljs-comment,
+.prose-mud pre .hljs-quote {
+  color: #525c6e;
+  font-style: italic;
+}
+
+/* keywords, control flow (if, for, return, function...) */
+.prose-mud pre .hljs-keyword,
+.prose-mud pre .hljs-selector-tag,
+.prose-mud pre .hljs-addition,
+.prose-mud pre .hljs-built_in {
+  color: #6b85ef;
+}
+
+/* strings and template literals */
+.prose-mud pre .hljs-string,
+.prose-mud pre .hljs-regexp,
+.prose-mud pre .hljs-template-tag,
+.prose-mud pre .hljs-template-variable {
+  color: #e59273;
+}
+
+/* numbers, boolean, null */
+.prose-mud pre .hljs-number,
+.prose-mud pre .hljs-literal {
+  color: #c3b1fd;
+}
+
+/* class names, types, constructors */
+.prose-mud pre .hljs-title,
+.prose-mud pre .hljs-class,
+.prose-mud pre .hljs-title.class_,
+.prose-mud pre .hljs-type {
+  color: #9caefb;
+}
+
+/* function names */
+.prose-mud pre .hljs-title.function_ {
+  color: #8fd4f8;
+}
+
+/* variable names and params */
+.prose-mud pre .hljs-variable,
+.prose-mud pre .hljs-params {
+  color: #c9cdd6;
+}
+
+/* object keys, attributes, CSS property names */
+.prose-mud pre .hljs-attr,
+.prose-mud pre .hljs-attribute,
+.prose-mud pre .hljs-property,
+.prose-mud pre .hljs-selector-id,
+.prose-mud pre .hljs-selector-class,
+.prose-mud pre .hljs-selector-attr,
+.prose-mud pre .hljs-selector-pseudo {
+  color: #9caefb;
+}
+
+/* XML/HTML tags */
+.prose-mud pre .hljs-tag {
+  color: #6b85ef;
+}
+
+/* tag names inside the tag brackets */
+.prose-mud pre .hljs-name {
+  color: #4568e8;
+}
+
+/* deletion markers in diffs */
+.prose-mud pre .hljs-deletion {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.10);
+}
+
+/* addition markers in diffs */
+.prose-mud pre .hljs-addition {
+  color: #6ee7b7;
+  background: rgba(110, 231, 183, 0.10);
+}
+
+/* meta / preprocessor / shebang */
+.prose-mud pre .hljs-meta,
+.prose-mud pre .hljs-meta .hljs-keyword {
+  color: #c3b1fd;
+}
+
+/* emphasis / strong inside doc comments or markdown code */
+.prose-mud pre .hljs-emphasis {
+  font-style: italic;
+}
+
+.prose-mud pre .hljs-strong {
+  font-weight: 600;
+}
+
+/* section headers (e.g. YAML keys, INI sections) */
+.prose-mud pre .hljs-section {
+  color: #9caefb;
+  font-weight: 600;
+}
+
+/* bullet symbols */
+.prose-mud pre .hljs-bullet,
+.prose-mud pre .hljs-symbol,
+.prose-mud pre .hljs-link {
+  color: #e59273;
+}
+
+/* ===================================================================
+   Cover image lightbox (admin post editor)
+   =================================================================== */
+
+/* Thumbnail trigger button - makes the thumbnail look clickable */
+.cover-thumb-trigger {
+  @apply mt-2 block w-full cursor-pointer rounded border border-ink-200 p-0 dark:border-ink-700;
+  background: transparent;
+  /* No padding so the image fills the button exactly */
+}
+
+.cover-thumb-trigger:focus-visible {
+  @apply outline-none ring-2 ring-mud-500 ring-offset-2;
+}
+
+.cover-thumb-img {
+  @apply h-32 w-full rounded object-cover;
+}
+
+/* Full-screen backdrop */
+.cover-lightbox-backdrop {
+  @apply fixed inset-0 z-50 flex items-center justify-center p-6;
+  background: rgba(8, 9, 12, 0.85);
+  /* Smooth fade-in; reduced-motion gets instant open */
+  animation: lightbox-in 180ms ease forwards;
+}
+
+@keyframes lightbox-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover-lightbox-backdrop {
+    animation: none;
+  }
+}
+
+/* Image container: constrain to viewport with margin, keep aspect ratio */
+.cover-lightbox-img-wrap {
+  @apply relative max-h-[85vh] max-w-[90vw];
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover-lightbox-img {
+  @apply block max-h-[85vh] max-w-[90vw] rounded-lg object-contain;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+}
+
+/* Close button - top right corner of backdrop */
+.cover-lightbox-close {
+  @apply absolute right-4 top-4 z-10 flex items-center justify-center rounded-full p-2 transition;
+  background: rgba(20, 23, 31, 0.80);
+  color: #9aa1b0;
+  cursor: pointer;
+}
+
+.cover-lightbox-close:hover {
+  background: rgba(40, 50, 70, 0.95);
+  color: #eef0f4;
+}
+
+.cover-lightbox-close:focus-visible {
+  @apply outline-none ring-2 ring-mud-500 ring-offset-2;
+  --tw-ring-offset-color: #080a10;
 }
