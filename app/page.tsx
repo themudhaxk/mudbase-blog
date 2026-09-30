@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PostSearch } from "@/components/post-search";
-import { getPublishedPosts } from "@/lib/mudbase";
+import { getPublishedPosts, toListPost } from "@/lib/mudbase";
 
 export const revalidate = 86400;
 
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage(): Promise<React.JSX.Element> {
-  const posts = await getPublishedPosts();
+  const posts = (await getPublishedPosts()).map(toListPost);
 
   return (
     <div className="flex min-h-screen flex-col">

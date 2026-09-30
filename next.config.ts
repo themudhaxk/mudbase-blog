@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
     root: __dirname,
   },
   images: {
+    // Covers are uploaded once under a new file id, so a long optimizer TTL is safe and keeps
+    // visitors from paying for a cold resize after every deploy.
+    minimumCacheTTL: 60 * 60 * 24 * 30,
+    deviceSizes: [640, 828, 1200, 1920],
+    imageSizes: [360, 720],
     remotePatterns: [
       {
         protocol: "https",
