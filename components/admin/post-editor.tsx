@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import { remarkPlugins, rehypePlugins } from "@/lib/markdown";
 import { sharedMarkdownComponents } from "@/lib/markdown-components";
 import { MarkdownToolbar } from "@/components/admin/markdown-toolbar";
+import { CoverLightbox } from "@/components/admin/cover-lightbox";
 import type { Post } from "@/lib/mudbase";
 
 export interface PostDraft {
@@ -375,14 +376,9 @@ export function PostEditor({ post, categories }: PostEditorProps): React.JSX.Ele
             <CoverUploadButton onUploaded={(url) => set("coverImage", url)} />
           </div>
           {draft.coverImage && (
-            // Deliberately a plain <img>: next/image needs the host in next.config remotePatterns,
-            // and a cover URL can point anywhere the author pastes.
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={draft.coverImage}
-              alt=""
-              className="mt-2 h-32 w-full rounded border border-ink-200 object-cover dark:border-ink-700"
-            />
+            // CoverLightbox renders a plain <img> thumbnail (no next/image: the URL can
+            // point anywhere the author pastes) and adds a lightbox modal on click.
+            <CoverLightbox src={draft.coverImage} />
           )}
         </div>
       </div>

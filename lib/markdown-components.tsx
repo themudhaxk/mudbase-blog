@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef } from "react";
+import { CodeBlock } from "@/components/code-block";
 
 /**
  * Shared react-markdown component overrides for `.prose-mud` content.
@@ -22,7 +23,12 @@ function MarkdownTable(props: ComponentPropsWithoutRef<"table">): React.JSX.Elem
   );
 }
 
-/** Renderer overrides safe for both the published page and the admin preview. */
+/**
+ * Renderer overrides safe for both the published page and the admin preview.
+ * `pre` is delegated to CodeBlock, which adds a language label and copy button
+ * while preserving the `.prose-mud pre` styles from globals.css.
+ */
 export const sharedMarkdownComponents = {
   table: MarkdownTable,
+  pre: CodeBlock,
 };
