@@ -1,106 +1,79 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520" role="img" aria-label="Four-way capability matrix comparing Firebase, Supabase, Appwrite, and PocketBase on auth, database, storage, realtime, functions, payments, and hosting model.">
-  <defs>
-    <marker id="arrow-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#0071FE"/>
-    </marker>
-    <marker id="arrow-muted" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#6E8AA8"/>
-    </marker>
-    <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#00C464"/>
-    </marker>
-    <marker id="arrow-orange" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#F97316"/>
-    </marker>
-    <marker id="arrow-teal" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#14B8A6"/>
-    </marker>
-  </defs>
-  <radialGradient id="bg-glow" cx="80%" cy="15%" r="50%" gradientUnits="objectBoundingBox">
-    <stop offset="0%" stop-color="#0071FE" stop-opacity="0.10"/>
-    <stop offset="100%" stop-color="#0071FE" stop-opacity="0"/>
-  </radialGradient>
-  <rect width="1200" height="520" rx="20" fill="#020617"/>
-  <rect width="1200" height="520" rx="20" fill="url(#bg-glow)"/>
-  <rect width="1200" height="520" rx="20" fill="none" stroke="rgba(90,140,255,0.25)" stroke-width="1"/>
-  <text x="60" y="38" font-family="'Courier New', Courier, monospace" font-size="14" fill="#8899BB" letter-spacing="3" text-anchor="start">FOUR-WAY CAPABILITY MATRIX</text>
-  <rect x="52" y="58" width="170" height="52" rx="8" fill="rgba(8,14,36,0.80)" stroke="rgba(55,74,98,0.30)" stroke-width="1"/>
-  <rect x="222" y="58" width="231" height="52" rx="8" fill="rgba(255,202,40,0.16)" stroke="rgba(255,202,40,0.42)" stroke-width="1"/>
-  <text x="337" y="92" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="700" fill="#FFCA28" text-anchor="middle">Firebase</text>
-  <rect x="453" y="58" width="231" height="52" rx="8" fill="rgba(62,207,142,0.15)" stroke="rgba(62,207,142,0.40)" stroke-width="1"/>
-  <text x="568" y="92" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="700" fill="#3ECF8E" text-anchor="middle">Supabase</text>
-  <rect x="684" y="58" width="231" height="52" rx="8" fill="rgba(245,56,56,0.14)" stroke="rgba(245,56,56,0.38)" stroke-width="1"/>
-  <text x="799" y="92" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="700" fill="#F53838" text-anchor="middle">Appwrite</text>
-  <rect x="915" y="58" width="233" height="52" rx="8" fill="rgba(249,115,22,0.14)" stroke="rgba(249,115,22,0.38)" stroke-width="1"/>
-  <text x="1031" y="92" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="700" fill="#FB923C" text-anchor="middle">PocketBase</text>
-  <rect x="52" y="110" width="170" height="76" fill="rgba(8,12,28,0.85)" stroke="rgba(55,74,98,0.20)" stroke-width="1"/>
-  <text x="137" y="153" font-family="'Courier New', Courier, monospace" font-size="14" fill="#8899BB" text-anchor="middle" letter-spacing="1">DATABASE</text>
-  <rect x="222" y="110" width="231" height="76" fill="rgba(4,8,20,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="242" y="133" width="190" height="30" rx="15" fill="#FFCA28" opacity="0.18" stroke="#FFCA28" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="337" y="155" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#FFCA28" text-anchor="middle">NoSQL (Firestore)</text>
-  <rect x="453" y="110" width="231" height="76" fill="rgba(4,8,20,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="518" y="133" width="100" height="30" rx="15" fill="#3ECF8E" opacity="0.18" stroke="#3ECF8E" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="568" y="155" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#3ECF8E" text-anchor="middle">Postgres</text>
-  <rect x="684" y="110" width="231" height="76" fill="rgba(4,8,20,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="692" y="133" width="215" height="30" rx="15" fill="#F56565" opacity="0.18" stroke="#F56565" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="799" y="155" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#F56565" text-anchor="middle">Structured documents</text>
-  <rect x="915" y="110" width="233" height="76" fill="rgba(4,8,20,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="991" y="133" width="80" height="30" rx="15" fill="#FB923C" opacity="0.18" stroke="#FB923C" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="1031" y="155" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#FB923C" text-anchor="middle">SQLite</text>
-  <rect x="52" y="186" width="170" height="76" fill="rgba(12,16,36,0.85)" stroke="rgba(55,74,98,0.20)" stroke-width="1"/>
-  <text x="137" y="229" font-family="'Courier New', Courier, monospace" font-size="14" fill="#8899BB" text-anchor="middle" letter-spacing="1">HOSTING</text>
-  <rect x="222" y="186" width="231" height="76" fill="rgba(8,12,26,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="262" y="209" width="150" height="30" rx="15" fill="#00C464" opacity="0.18" stroke="#00C464" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="337" y="231" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#00C464" text-anchor="middle">Fully managed</text>
-  <rect x="453" y="186" width="231" height="76" fill="rgba(8,12,26,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="461" y="209" width="215" height="30" rx="15" fill="#3ECF8E" opacity="0.18" stroke="#3ECF8E" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="568" y="231" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#3ECF8E" text-anchor="middle">Managed, or self-hosted</text>
-  <rect x="684" y="186" width="231" height="76" fill="rgba(8,12,26,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="692" y="209" width="215" height="30" rx="15" fill="#6E8AA8" opacity="0.18" stroke="#6E8AA8" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="799" y="231" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#6E8AA8" text-anchor="middle">Self-hosted (Docker)</text>
-  <rect x="915" y="186" width="233" height="76" fill="rgba(8,12,26,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="931" y="209" width="200" height="30" rx="15" fill="#F97316" opacity="0.18" stroke="#F97316" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="1031" y="231" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#F97316" text-anchor="middle">Self-hosted binary</text>
-  <rect x="52" y="262" width="170" height="76" fill="rgba(8,12,28,0.85)" stroke="rgba(55,74,98,0.20)" stroke-width="1"/>
-  <text x="137" y="305" font-family="'Courier New', Courier, monospace" font-size="14" fill="#8899BB" text-anchor="middle" letter-spacing="1">AUTH</text>
-  <rect x="222" y="262" width="231" height="76" fill="rgba(4,8,20,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="230" y="285" width="215" height="30" rx="15" fill="#FFCA28" opacity="0.18" stroke="#FFCA28" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="337" y="307" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#FFCA28" text-anchor="middle">Email, phone, social</text>
-  <rect x="453" y="262" width="231" height="76" fill="rgba(4,8,20,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="461" y="285" width="215" height="30" rx="15" fill="#3ECF8E" opacity="0.18" stroke="#3ECF8E" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="568" y="307" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#3ECF8E" text-anchor="middle">Email, magic link, social</text>
-  <rect x="684" y="262" width="231" height="76" fill="rgba(4,8,20,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="692" y="285" width="215" height="30" rx="15" fill="#F56565" opacity="0.18" stroke="#F56565" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="799" y="307" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#F56565" text-anchor="middle">Email, phone, social</text>
-  <rect x="915" y="262" width="233" height="76" fill="rgba(4,8,20,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="931" y="285" width="200" height="30" rx="15" fill="#FB923C" opacity="0.18" stroke="#FB923C" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="1031" y="307" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#FB923C" text-anchor="middle">Email, OAuth2, OTP</text>
-  <rect x="52" y="338" width="170" height="76" fill="rgba(12,16,36,0.85)" stroke="rgba(55,74,98,0.20)" stroke-width="1"/>
-  <text x="137" y="381" font-family="'Courier New', Courier, monospace" font-size="14" fill="#8899BB" text-anchor="middle" letter-spacing="1">FUNCTIONS</text>
-  <rect x="222" y="338" width="231" height="76" fill="rgba(8,12,26,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="252" y="361" width="170" height="30" rx="15" fill="#FFCA28" opacity="0.18" stroke="#FFCA28" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="337" y="383" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#FFCA28" text-anchor="middle">Cloud Functions</text>
-  <rect x="453" y="338" width="231" height="76" fill="rgba(8,12,26,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="461" y="361" width="215" height="30" rx="15" fill="#3ECF8E" opacity="0.18" stroke="#3ECF8E" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="568" y="383" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#3ECF8E" text-anchor="middle">Edge Functions (Deno)</text>
-  <rect x="684" y="338" width="231" height="76" fill="rgba(8,12,26,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="692" y="361" width="215" height="30" rx="15" fill="#F56565" opacity="0.18" stroke="#F56565" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="799" y="383" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#F56565" text-anchor="middle">Multi-runtime functions</text>
-  <rect x="915" y="338" width="233" height="76" fill="rgba(8,12,26,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="956" y="361" width="150" height="30" rx="15" fill="#FB923C" opacity="0.18" stroke="#FB923C" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="1031" y="383" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#FB923C" text-anchor="middle">None built in</text>
-  <rect x="52" y="414" width="170" height="76" fill="rgba(8,12,28,0.85)" stroke="rgba(55,74,98,0.20)" stroke-width="1"/>
-  <text x="137" y="457" font-family="'Courier New', Courier, monospace" font-size="14" fill="#8899BB" text-anchor="middle" letter-spacing="1">PAYMENTS</text>
-  <rect x="222" y="414" width="231" height="76" fill="rgba(4,8,20,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="267" y="437" width="140" height="30" rx="15" fill="#6E8AA8" opacity="0.18" stroke="#6E8AA8" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="337" y="459" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#6E8AA8" text-anchor="middle">Not included</text>
-  <rect x="453" y="414" width="231" height="76" fill="rgba(4,8,20,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="498" y="437" width="140" height="30" rx="15" fill="#6E8AA8" opacity="0.18" stroke="#6E8AA8" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="568" y="459" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#6E8AA8" text-anchor="middle">Not included</text>
-  <rect x="684" y="414" width="231" height="76" fill="rgba(4,8,20,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="729" y="437" width="140" height="30" rx="15" fill="#6E8AA8" opacity="0.18" stroke="#6E8AA8" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="799" y="459" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#6E8AA8" text-anchor="middle">Not included</text>
-  <rect x="915" y="414" width="233" height="76" fill="rgba(4,8,20,0.82)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
-  <rect x="961" y="437" width="140" height="30" rx="15" fill="#6E8AA8" opacity="0.18" stroke="#6E8AA8" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="1031" y="459" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#6E8AA8" text-anchor="middle">Not included</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680" role="img" aria-label="Four-way comparison of Firebase, Supabase, Appwrite, and PocketBase across database, hosting, auth, functions, and payments.">
+  <rect width="1200" height="680" rx="20" fill="#020617"/>
+  <rect width="1200" height="680" rx="20" fill="none" stroke="rgba(90,140,255,0.25)" stroke-width="1"/>
+  <text x="60" y="46" font-family="'Courier New', Courier, monospace" font-size="22" fill="#8899BB" letter-spacing="3">FOUR-WAY CAPABILITY MATRIX</text>
+
+  <!-- Label col: x=40 w=160 right=200. 4 product cols 240px each: 200,440,680,920 right=1160 -->
+
+  <!-- Headers y=60 h=68 -->
+  <rect x="40" y="60" width="160" height="68" rx="8" fill="rgba(10,12,20,0.7)" stroke="rgba(55,74,98,0.2)" stroke-width="1"/>
+  <rect x="200" y="60" width="240" height="68" rx="8" fill="rgba(255,195,0,0.15)" stroke="rgba(255,195,0,0.4)" stroke-width="1.5"/>
+  <text x="320" y="102" font-family="system-ui,-apple-system,sans-serif" font-size="28" font-weight="700" fill="#FFC300" text-anchor="middle">Firebase</text>
+  <rect x="440" y="60" width="240" height="68" rx="8" fill="rgba(62,207,142,0.15)" stroke="rgba(62,207,142,0.4)" stroke-width="1.5"/>
+  <text x="560" y="102" font-family="system-ui,-apple-system,sans-serif" font-size="28" font-weight="700" fill="#3ECF8E" text-anchor="middle">Supabase</text>
+  <rect x="680" y="60" width="240" height="68" rx="8" fill="rgba(240,82,82,0.15)" stroke="rgba(240,82,82,0.4)" stroke-width="1.5"/>
+  <text x="800" y="102" font-family="system-ui,-apple-system,sans-serif" font-size="28" font-weight="700" fill="#F05252" text-anchor="middle">Appwrite</text>
+  <rect x="920" y="60" width="240" height="68" rx="8" fill="rgba(249,115,22,0.15)" stroke="rgba(249,115,22,0.4)" stroke-width="1.5"/>
+  <text x="1040" y="102" font-family="system-ui,-apple-system,sans-serif" font-size="28" font-weight="700" fill="#FB923C" text-anchor="middle">PocketBase</text>
+
+  <!-- Row: Database y=128 h=100 -->
+  <rect x="40" y="128" width="160" height="100" fill="rgba(10,12,20,0.6)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="60" y="186" font-family="'Courier New',Courier,monospace" font-size="24" fill="#8A6A5A" letter-spacing="1">Database</text>
+  <rect x="200" y="128" width="240" height="100" fill="rgba(10,12,20,0.5)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="320" y="186" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#FFC300" text-anchor="middle">NoSQL</text>
+  <rect x="440" y="128" width="240" height="100" fill="rgba(10,12,20,0.5)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="560" y="186" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#C8D8F0" text-anchor="middle">Postgres</text>
+  <rect x="680" y="128" width="240" height="100" fill="rgba(10,12,20,0.5)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="800" y="186" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#C8D8F0" text-anchor="middle">Documents</text>
+  <rect x="920" y="128" width="240" height="100" fill="rgba(10,12,20,0.5)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="1040" y="186" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#C8D8F0" text-anchor="middle">SQLite</text>
+
+  <!-- Row: Hosting y=228 h=100 -->
+  <rect x="40" y="228" width="160" height="100" fill="rgba(10,12,20,0.5)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="60" y="286" font-family="'Courier New',Courier,monospace" font-size="24" fill="#8A6A5A" letter-spacing="1">Hosting</text>
+  <rect x="200" y="228" width="240" height="100" fill="rgba(10,12,20,0.45)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="320" y="286" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#C8D8F0" text-anchor="middle">Fully managed</text>
+  <rect x="440" y="228" width="240" height="100" fill="rgba(10,12,20,0.45)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="560" y="278" font-family="system-ui,-apple-system,sans-serif" font-size="24" fill="#C8D8F0" text-anchor="middle">Managed</text>
+  <text x="560" y="306" font-family="system-ui,-apple-system,sans-serif" font-size="22" fill="#6E8AA8" text-anchor="middle">or self-hosted</text>
+  <rect x="680" y="228" width="240" height="100" fill="rgba(10,12,20,0.45)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="800" y="286" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#C8D8F0" text-anchor="middle">Self-hosted</text>
+  <rect x="920" y="228" width="240" height="100" fill="rgba(10,12,20,0.45)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="1040" y="286" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#C8D8F0" text-anchor="middle">Self-hosted</text>
+
+  <!-- Row: Auth y=328 h=100 -->
+  <rect x="40" y="328" width="160" height="100" fill="rgba(10,12,20,0.6)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="60" y="386" font-family="'Courier New',Courier,monospace" font-size="24" fill="#8A6A5A" letter-spacing="1">Auth</text>
+  <rect x="200" y="328" width="240" height="100" fill="rgba(10,12,20,0.5)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="320" y="386" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#C8D8F0" text-anchor="middle">Email + social</text>
+  <rect x="440" y="328" width="240" height="100" fill="rgba(10,12,20,0.5)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="560" y="386" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#C8D8F0" text-anchor="middle">Email + social</text>
+  <rect x="680" y="328" width="240" height="100" fill="rgba(10,12,20,0.5)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="800" y="386" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#C8D8F0" text-anchor="middle">Email + OAuth</text>
+  <rect x="920" y="328" width="240" height="100" fill="rgba(10,12,20,0.5)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="1040" y="386" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#C8D8F0" text-anchor="middle">Email + OAuth</text>
+
+  <!-- Row: Functions y=428 h=100 -->
+  <rect x="40" y="428" width="160" height="100" fill="rgba(10,12,20,0.5)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="60" y="486" font-family="'Courier New',Courier,monospace" font-size="24" fill="#8A6A5A" letter-spacing="1">Functions</text>
+  <rect x="200" y="428" width="240" height="100" fill="rgba(10,12,20,0.45)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="320" y="486" font-family="system-ui,-apple-system,sans-serif" font-size="24" fill="#FFC300" text-anchor="middle">Cloud Functions</text>
+  <rect x="440" y="428" width="240" height="100" fill="rgba(10,12,20,0.45)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="560" y="486" font-family="system-ui,-apple-system,sans-serif" font-size="24" fill="#C8D8F0" text-anchor="middle">Edge Functions</text>
+  <rect x="680" y="428" width="240" height="100" fill="rgba(10,12,20,0.45)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="800" y="486" font-family="system-ui,-apple-system,sans-serif" font-size="24" fill="#C8D8F0" text-anchor="middle">Multi-runtime</text>
+  <rect x="920" y="428" width="240" height="100" fill="rgba(10,12,20,0.45)" stroke="rgba(55,74,98,0.18)" stroke-width="1"/>
+  <text x="1040" y="486" font-family="system-ui,-apple-system,sans-serif" font-size="24" fill="#6E8AA8" text-anchor="middle">None built in</text>
+
+  <!-- Row: Payments y=528 h=112 -->
+  <rect x="40" y="528" width="160" height="112" fill="rgba(10,12,20,0.5)" stroke="rgba(55,74,98,0.18)" stroke-width="1" rx="0 0 6 6"/>
+  <text x="60" y="592" font-family="'Courier New',Courier,monospace" font-size="24" fill="#8A6A5A" letter-spacing="1">Payments</text>
+  <rect x="200" y="528" width="240" height="112" fill="rgba(10,12,20,0.45)" stroke="rgba(55,74,98,0.18)" stroke-width="1" rx="0 0 6 6"/>
+  <text x="320" y="592" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#FB923C" text-anchor="middle">Not included</text>
+  <rect x="440" y="528" width="240" height="112" fill="rgba(10,12,20,0.45)" stroke="rgba(55,74,98,0.18)" stroke-width="1" rx="0 0 6 6"/>
+  <text x="560" y="592" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#FB923C" text-anchor="middle">Not included</text>
+  <rect x="680" y="528" width="240" height="112" fill="rgba(10,12,20,0.45)" stroke="rgba(55,74,98,0.18)" stroke-width="1" rx="0 0 6 6"/>
+  <text x="800" y="592" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#FB923C" text-anchor="middle">Not included</text>
+  <rect x="920" y="528" width="240" height="112" fill="rgba(10,12,20,0.45)" stroke="rgba(55,74,98,0.18)" stroke-width="1" rx="0 0 6 6"/>
+  <text x="1040" y="592" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#FB923C" text-anchor="middle">Not included</text>
 </svg>
