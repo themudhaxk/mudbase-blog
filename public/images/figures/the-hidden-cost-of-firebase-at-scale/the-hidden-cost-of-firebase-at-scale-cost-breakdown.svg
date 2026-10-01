@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 510" width="1200" height="510" role="img" aria-label="Firebase hidden costs at scale: Firestore reads and writes per operation, storage and egress on their own meter, functions billed per invocation, payments require a separate vendor.">
+  <defs>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#0071FE"/>
+    </marker>
+    <marker id="arrow-muted" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#6E8AA8"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#00C464"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#F97316"/>
+    </marker>
+    <marker id="arrow-teal" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#14B8A6"/>
+    </marker>
+  </defs>
+  <radialGradient id="bg-glow" cx="80%" cy="15%" r="50%" gradientUnits="objectBoundingBox">
+    <stop offset="0%" stop-color="#0071FE" stop-opacity="0.10"/>
+    <stop offset="100%" stop-color="#0071FE" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1200" height="510" rx="20" fill="#020617"/>
+  <rect width="1200" height="510" rx="20" fill="url(#bg-glow)"/>
+  <rect width="1200" height="510" rx="20" fill="none" stroke="rgba(90,140,255,0.25)" stroke-width="1"/>
+  <text x="60" y="38" font-family="'Courier New', Courier, monospace" font-size="14" fill="#8899BB" letter-spacing="3" text-anchor="start">FIREBASE HIDDEN COSTS AT SCALE</text>
+  <rect x="52" y="62" width="1096" height="78" rx="10" fill="rgba(249,115,22,0.20)" stroke="rgba(249,115,22,0.50)" stroke-width="1"/>
+  <text x="80" y="88" font-family="'Courier New', Courier, monospace" font-size="14" fill="#FB923C" text-anchor="start" letter-spacing="1">FIRESTORE</text>
+  <text x="80" y="120" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#D4C8B4" text-anchor="start">reads and writes per operation</text>
+  <circle cx="1120" cy="101" r="6" fill="#FB923C" opacity="0.55"/>
+  <rect x="52" y="146" width="1096" height="78" rx="10" fill="rgba(234,179,8,0.18)" stroke="rgba(234,179,8,0.48)" stroke-width="1"/>
+  <text x="80" y="172" font-family="'Courier New', Courier, monospace" font-size="14" fill="#FCD34D" text-anchor="start" letter-spacing="1">STORAGE + EGRESS</text>
+  <text x="80" y="204" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#D4C8B4" text-anchor="start">files and bandwidth are their own meter</text>
+  <circle cx="1120" cy="185" r="6" fill="#FCD34D" opacity="0.55"/>
+  <rect x="52" y="230" width="1096" height="78" rx="10" fill="rgba(168,85,247,0.16)" stroke="rgba(168,85,247,0.45)" stroke-width="1"/>
+  <text x="80" y="256" font-family="'Courier New', Courier, monospace" font-size="14" fill="#C084FC" text-anchor="start" letter-spacing="1">CLOUD FUNCTIONS</text>
+  <text x="80" y="288" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#D4C8B4" text-anchor="start">relocated query logic bills per invocation</text>
+  <circle cx="1120" cy="269" r="6" fill="#C084FC" opacity="0.55"/>
+  <rect x="52" y="314" width="1096" height="78" rx="10" fill="rgba(239,68,68,0.16)" stroke="rgba(239,68,68,0.45)" stroke-width="1"/>
+  <text x="80" y="340" font-family="'Courier New', Courier, monospace" font-size="14" fill="#F87171" text-anchor="start" letter-spacing="1">PAYMENTS</text>
+  <text x="80" y="372" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#D4C8B4" text-anchor="start">not a Firebase primitive, separate vendor</text>
+  <circle cx="1120" cy="353" r="6" fill="#F87171" opacity="0.55"/>
+  <rect x="52" y="404" width="1096" height="62" rx="10" fill="rgba(5,3,18,0.96)" stroke="rgba(249,115,22,0.50)" stroke-width="2"/>
+  <text x="600" y="430" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="17" font-weight="700" fill="#FB923C" text-anchor="middle">cost scales with operation count, which scales with usage</text>
+  <text x="600" y="454" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="400" fill="#8899BB" text-anchor="middle">operations multiply in ways that are not obvious from your feature list</text>
+</svg>

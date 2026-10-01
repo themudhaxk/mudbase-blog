@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img" aria-label="RBAC: user assigned a role, role carries permissions, policy narrows by data. Support agent reads tickets but cannot delete a user account.">
+  <defs>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#0071FE"/>
+    </marker>
+    <marker id="arrow-muted" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#6E8AA8"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#00C464"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#F97316"/>
+    </marker>
+    <marker id="arrow-teal" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#14B8A6"/>
+    </marker>
+  </defs>
+  <radialGradient id="bg-glow" cx="80%" cy="15%" r="50%" gradientUnits="objectBoundingBox">
+    <stop offset="0%" stop-color="#0071FE" stop-opacity="0.10"/>
+    <stop offset="100%" stop-color="#0071FE" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1200" height="750" rx="20" fill="#020617"/>
+  <rect width="1200" height="750" rx="20" fill="url(#bg-glow)"/>
+  <rect width="1200" height="750" rx="20" fill="none" stroke="rgba(90,140,255,0.25)" stroke-width="1"/>
+  <text x="60" y="38" font-family="'Courier New', Courier, monospace" font-size="14" fill="#8899BB" letter-spacing="3" text-anchor="start">ROLES, PERMISSIONS, POLICIES</text>
+  <rect x="450" y="60" width="300" height="100" rx="12" fill="rgba(55,74,98,0.30)" stroke="rgba(55,74,98,0.55)" stroke-width="1"/>
+  <text x="600" y="92" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">User</text>
+  <rect x="536" y="126" width="128" height="22" rx="4" fill="rgba(2,6,23,0.92)"/>
+  <text x="600" y="144" font-family="'Courier New', Courier, monospace" font-size="14" fill="#8899BB" text-anchor="middle" letter-spacing="1">assign a role</text>
+  <rect x="450" y="200" width="300" height="100" rx="12" fill="rgba(110,91,255,0.16)" stroke="rgba(110,91,255,0.48)" stroke-width="1"/>
+  <text x="600" y="232" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">Role</text>
+  <rect x="497" y="266" width="206" height="22" rx="4" fill="rgba(2,6,23,0.92)"/>
+  <text x="600" y="284" font-family="'Courier New', Courier, monospace" font-size="14" fill="#8899BB" text-anchor="middle" letter-spacing="1">admin, agent, customer</text>
+  <rect x="450" y="340" width="300" height="100" rx="12" fill="rgba(0,113,254,0.16)" stroke="rgba(0,113,254,0.48)" stroke-width="1"/>
+  <text x="600" y="372" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">Permission</text>
+  <rect x="471" y="406" width="259" height="22" rx="4" fill="rgba(2,6,23,0.92)"/>
+  <text x="600" y="424" font-family="'Courier New', Courier, monospace" font-size="14" fill="#8899BB" text-anchor="middle" letter-spacing="1">named bundle of capabilities</text>
+  <rect x="450" y="480" width="300" height="100" rx="12" fill="rgba(0,113,254,0.14)" stroke="rgba(0,113,254,0.44)" stroke-width="1"/>
+  <text x="600" y="512" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">Policy</text>
+  <rect x="471" y="546" width="259" height="22" rx="4" fill="rgba(2,6,23,0.92)"/>
+  <text x="600" y="564" font-family="'Courier New', Courier, monospace" font-size="14" fill="#8899BB" text-anchor="middle" letter-spacing="1">can read orders they created</text>
+  <line x1="600" y1="160" x2="600" y2="196" stroke="#0071FE" stroke-width="2" stroke-dasharray="none" marker-end="url(#arrow-blue)"/>
+  <line x1="600" y1="300" x2="600" y2="336" stroke="#0071FE" stroke-width="2" stroke-dasharray="none" marker-end="url(#arrow-blue)"/>
+  <line x1="600" y1="440" x2="600" y2="476" stroke="#0071FE" stroke-width="2" stroke-dasharray="none" marker-end="url(#arrow-blue)"/>
+  <rect x="85" y="658" width="270" height="72" rx="12" fill="rgba(0,196,74,0.14)" stroke="rgba(0,196,74,0.45)" stroke-width="1"/>
+  <text x="220" y="701" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">read tickets</text>
+  <rect x="845" y="658" width="270" height="72" rx="12" fill="rgba(220,64,64,0.14)" stroke="rgba(220,64,64,0.48)" stroke-width="1"/>
+  <text x="980" y="701" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="700" fill="#F87171" text-anchor="middle">not delete a user</text>
+  <path d="M 450 580 L 450 604 L 220 604 L 220 654" fill="none" stroke="#00C464" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <rect x="387" y="572" width="59" height="22" rx="4" fill="rgba(2,6,23,0.92)"/>
+  <text x="438" y="590" font-family="'Courier New', Courier, monospace" font-size="14" fill="#00C464" text-anchor="end" letter-spacing="1">ALLOW</text>
+  <path d="M 750 580 L 750 604 L 980 604 L 980 654" fill="none" stroke="#DC4040" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <rect x="754" y="572" width="50" height="22" rx="4" fill="rgba(2,6,23,0.92)"/>
+  <text x="762" y="590" font-family="'Courier New', Courier, monospace" font-size="14" fill="#F87171" text-anchor="start" letter-spacing="1">DENY</text>
+</svg>
