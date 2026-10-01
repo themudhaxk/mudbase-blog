@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-label="Backend cost drivers after launch: per-operation billing, egress charges, storage growth, and function invocations each scale with traffic.">
+  <defs>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#0071FE"/>
+    </marker>
+    <marker id="arrow-muted" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#6E8AA8"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#00C464"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#F97316"/>
+    </marker>
+    <marker id="arrow-teal" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#14B8A6"/>
+    </marker>
+  </defs>
+  <radialGradient id="bg-glow" cx="80%" cy="15%" r="50%" gradientUnits="objectBoundingBox">
+    <stop offset="0%" stop-color="#0071FE" stop-opacity="0.10"/>
+    <stop offset="100%" stop-color="#0071FE" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1200" height="400" rx="20" fill="#020617"/>
+  <rect width="1200" height="400" rx="20" fill="url(#bg-glow)"/>
+  <rect width="1200" height="400" rx="20" fill="none" stroke="rgba(90,140,255,0.25)" stroke-width="1"/>
+  <text x="60" y="38" font-family="'Courier New', Courier, monospace" font-size="14" fill="#8899BB" letter-spacing="3" text-anchor="start">BACKEND COST GROWTH AFTER LAUNCH</text>
+  <rect x="52" y="80" width="248" height="150" rx="12" fill="rgba(249,115,22,0.18)" stroke="rgba(249,115,22,0.50)" stroke-width="1"/>
+  <text x="176" y="108" font-family="'Courier New', Courier, monospace" font-size="14" fill="#FB923C" text-anchor="middle" letter-spacing="1">PER-OPERATION</text>
+  <line x1="72" y1="122" x2="280" y2="122" stroke="#FB923C" stroke-width="1" opacity="0.35"/>
+  <text x="176" y="150" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="600" fill="#D4C8B4" text-anchor="middle">bills per invocations</text>
+  <text x="176" y="180" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="400" fill="#8899BB" text-anchor="middle">flat near zero, steep at scale</text>
+  <rect x="334" y="80" width="248" height="150" rx="12" fill="rgba(239,68,68,0.16)" stroke="rgba(239,68,68,0.45)" stroke-width="1"/>
+  <text x="458" y="108" font-family="'Courier New', Courier, monospace" font-size="14" fill="#F87171" text-anchor="middle" letter-spacing="1">EGRESS</text>
+  <line x1="354" y1="122" x2="562" y2="122" stroke="#F87171" stroke-width="1" opacity="0.35"/>
+  <text x="458" y="150" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="600" fill="#D4C8B4" text-anchor="middle">bandwidth out</text>
+  <text x="458" y="180" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="400" fill="#8899BB" text-anchor="middle">ambushes at launch</text>
+  <rect x="616" y="80" width="248" height="150" rx="12" fill="rgba(234,179,8,0.16)" stroke="rgba(234,179,8,0.44)" stroke-width="1"/>
+  <text x="740" y="108" font-family="'Courier New', Courier, monospace" font-size="14" fill="#FCD34D" text-anchor="middle" letter-spacing="1">STORAGE</text>
+  <line x1="636" y1="122" x2="844" y2="122" stroke="#FCD34D" stroke-width="1" opacity="0.35"/>
+  <text x="740" y="150" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="600" fill="#D4C8B4" text-anchor="middle">grows with usage</text>
+  <text x="740" y="180" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="400" fill="#8899BB" text-anchor="middle">grows month over month</text>
+  <rect x="898" y="80" width="248" height="150" rx="12" fill="rgba(168,85,247,0.14)" stroke="rgba(168,85,247,0.42)" stroke-width="1"/>
+  <text x="1022" y="108" font-family="'Courier New', Courier, monospace" font-size="14" fill="#C084FC" text-anchor="middle" letter-spacing="1">FUNCTIONS</text>
+  <line x1="918" y1="122" x2="1126" y2="122" stroke="#C084FC" stroke-width="1" opacity="0.35"/>
+  <text x="1022" y="150" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="600" fill="#D4C8B4" text-anchor="middle">function call billing</text>
+  <text x="1022" y="180" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="400" fill="#8899BB" text-anchor="middle">new endpoints scale traffic</text>
+  <rect x="52" y="266" width="1096" height="100" rx="10" fill="rgba(5,3,18,0.80)" stroke="rgba(55,74,98,0.35)" stroke-width="1"/>
+  <text x="600" y="302" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="700" fill="#C8D8F0" text-anchor="middle">the bill does not rise in proportion to your revenue</text>
+  <text x="600" y="328" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="17" font-weight="400" fill="#8899BB" text-anchor="middle">it rises in proportion to your traffic</text>
+  <text x="600" y="352" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="400" fill="#6E8AA8" text-anchor="middle">early on those two are not the same number</text>
+</svg>

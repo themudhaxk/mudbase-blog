@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" width="1200" height="340" role="img" aria-label="Fintech data model: accounts (ownerId, currency, balanceMinor) linked to ledger_entries (account, direction, amountMinor, transferId, idempotencyKey).">
+  <defs>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#0071FE"/>
+    </marker>
+    <marker id="arrow-muted" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#6E8AA8"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#00C464"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#F97316"/>
+    </marker>
+    <marker id="arrow-teal" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#14B8A6"/>
+    </marker>
+  </defs>
+  <radialGradient id="bg-glow" cx="80%" cy="15%" r="50%" gradientUnits="objectBoundingBox">
+    <stop offset="0%" stop-color="#0071FE" stop-opacity="0.10"/>
+    <stop offset="100%" stop-color="#0071FE" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1200" height="340" rx="20" fill="#020617"/>
+  <rect width="1200" height="340" rx="20" fill="url(#bg-glow)"/>
+  <rect width="1200" height="340" rx="20" fill="none" stroke="rgba(90,140,255,0.25)" stroke-width="1"/>
+  <text x="60" y="38" font-family="'Courier New', Courier, monospace" font-size="14" fill="#8899BB" letter-spacing="3" text-anchor="start">FINTECH DATA MODEL</text>
+  <rect x="80" y="108" width="310" height="144" rx="14" fill="rgba(110,91,255,0.14)" stroke="rgba(110,91,255,0.44)" stroke-width="1"/>
+  <rect x="80" y="108" width="310" height="42" rx="14 14 0 0" fill="rgba(0,113,254,0.22)" stroke="none"/>
+  <text x="235" y="136" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">accounts</text>
+  <text x="100" y="180" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="600" fill="#C8D8F0" text-anchor="start">ownerId</text>
+  <text x="374" y="180" font-family="'Courier New', Courier, monospace" font-size="14" fill="#4A8A9A" text-anchor="end" letter-spacing="1">string</text>
+  <text x="100" y="208" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="600" fill="#C8D8F0" text-anchor="start">currency</text>
+  <text x="374" y="208" font-family="'Courier New', Courier, monospace" font-size="14" fill="#4A8A9A" text-anchor="end" letter-spacing="1">enum</text>
+  <text x="100" y="236" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="600" fill="#C8D8F0" text-anchor="start">balanceMinor</text>
+  <text x="374" y="236" font-family="'Courier New', Courier, monospace" font-size="14" fill="#4A8A9A" text-anchor="end" letter-spacing="1">number</text>
+  <rect x="810" y="82" width="310" height="196" rx="14" fill="rgba(0,113,254,0.14)" stroke="rgba(0,113,254,0.44)" stroke-width="1"/>
+  <rect x="810" y="82" width="310" height="42" rx="14 14 0 0" fill="rgba(0,113,254,0.22)" stroke="none"/>
+  <text x="965" y="110" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">ledger_entries</text>
+  <text x="830" y="153" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="600" fill="#C8D8F0" text-anchor="start">account</text>
+  <text x="1104" y="153" font-family="'Courier New', Courier, monospace" font-size="14" fill="#4A8A9A" text-anchor="end" letter-spacing="1">ref</text>
+  <text x="830" y="180" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="600" fill="#C8D8F0" text-anchor="start">direction</text>
+  <text x="1104" y="180" font-family="'Courier New', Courier, monospace" font-size="14" fill="#4A8A9A" text-anchor="end" letter-spacing="1">enum</text>
+  <text x="830" y="207" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="600" fill="#C8D8F0" text-anchor="start">amountMinor</text>
+  <text x="1104" y="207" font-family="'Courier New', Courier, monospace" font-size="14" fill="#4A8A9A" text-anchor="end" letter-spacing="1">number</text>
+  <text x="830" y="234" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="600" fill="#C8D8F0" text-anchor="start">transferId</text>
+  <text x="1104" y="234" font-family="'Courier New', Courier, monospace" font-size="14" fill="#4A8A9A" text-anchor="end" letter-spacing="1">string</text>
+  <text x="830" y="261" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="600" fill="#C8D8F0" text-anchor="start">idempotencyKey</text>
+  <text x="1104" y="261" font-family="'Courier New', Courier, monospace" font-size="14" fill="#4A8A9A" text-anchor="end" letter-spacing="1">string</text>
+  <line x1="393" y1="180" x2="803" y2="180" stroke="#0071FE" stroke-width="2" stroke-dasharray="none" marker-end="url(#arrow-blue)"/>
+  <rect x="545" y="142" width="111" height="22" rx="4" fill="rgba(2,6,23,0.92)"/>
+  <text x="600" y="160" font-family="'Courier New', Courier, monospace" font-size="14" fill="#6E8AA8" text-anchor="middle" letter-spacing="1">account ref</text>
+  <rect x="475" y="192" width="250" height="22" rx="4" fill="rgba(2,6,23,0.92)"/>
+  <text x="600" y="210" font-family="'Courier New', Courier, monospace" font-size="14" fill="#374A62" text-anchor="middle" letter-spacing="1">balance derived from ledger</text>
+</svg>
