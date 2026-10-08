@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { maybeMudbaseProxied } from "@/lib/image-proxy";
 
 interface CoverLightboxProps {
   /** Image URL to display full-size. Falsy value renders just the thumbnail. */
@@ -91,9 +92,17 @@ export function CoverLightbox({ src, alt = "", thumbnailClassName }: CoverLightb
         aria-label="View cover image full size"
         aria-haspopup="dialog"
       >
+        {/*
+          Route api.mudbase.dev URLs through /_next/image (same-origin) to avoid
+          Chrome blocking the load with net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin.
+          That host sends Cross-Origin-Resource-Policy: same-origin; the proxy
+          fetches the image server-side and serves it at the blog origin.
+          Non-api.mudbase.dev URLs (arbitrary pastes by the author) are kept as-is
+          because /_next/image rejects hosts not in next.config remotePatterns.
+        */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={src}
+          src={maybeMudbaseProxied(src, 640)}
           alt={alt}
           className={thumbnailClassName ?? "cover-thumb-img"}
         />
@@ -138,7 +147,7 @@ export function CoverLightbox({ src, alt = "", thumbnailClassName }: CoverLightb
           <div className="cover-lightbox-img-wrap">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={src}
+              src={maybeMudbaseProxied(src, 1920)}
               alt={alt}
               className="cover-lightbox-img"
             />

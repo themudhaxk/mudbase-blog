@@ -8,6 +8,7 @@ import { showcaseForSlug } from "@/lib/showcases";
 import { ShowcaseLinksBar } from "@/components/showcase-links";
 import { remarkPlugins, rehypePlugins } from "@/lib/markdown";
 import { sharedMarkdownComponents } from "@/lib/markdown-components";
+import { proxiedImageSrc } from "@/lib/image-proxy";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getPostBySlug, getPublishedPosts } from "@/lib/mudbase";
@@ -50,16 +51,6 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 function stripTitleHeading(body: string, title: string): string {
   const firstHeadingPattern = new RegExp(`^#\\s+${title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*\\n`);
   return body.replace(firstHeadingPattern, "");
-}
-
-// Routes markdown-embedded images through Next's server-side image proxy instead of
-// linking directly to api.mudbase.dev - a direct cross-origin <img> load is blocked by
-// Chrome (net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin) because that endpoint sends a
-// Cross-Origin-Resource-Policy header. The proxy fetches server-side, sidestepping it.
-function proxiedImageSrc(src: string): string {
-  // 1920 must be one of next.config.ts's (default) images.deviceSizes entries - an
-  // arbitrary width is rejected by the optimizer with a 400.
-  return `/_next/image?url=${encodeURIComponent(src)}&w=1920&q=75`;
 }
 
 function MarkdownImage({ src, alt }: { src?: string; alt?: string }): React.JSX.Element | null {
