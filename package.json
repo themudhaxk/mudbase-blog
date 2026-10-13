@@ -9,7 +9,8 @@
     "lint": "next lint",
     "verify:markdown": "tsx scripts/verify-markdown.mts",
     "verify:admin": "tsx scripts/verify-admin-access.mts",
-    "verify:resilience": "tsx scripts/verify-resilience.mts"
+    "verify:resilience": "tsx scripts/verify-resilience.mts",
+    "verify:csp": "tsx scripts/verify-csp.mts"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",
