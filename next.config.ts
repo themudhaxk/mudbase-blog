@@ -26,6 +26,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/posts/self-hosted-mongodb-on-flyio",
+        destination: "/posts/self-hosted-mongodb-cluster",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     // Content-Security-Policy-Report-Only enumerates every origin this app loads so that
     // browser console reports reveal any unlisted source before we flip to enforcement.
