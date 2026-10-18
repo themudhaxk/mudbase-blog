@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/default-cover.png",
+        url: "https://blog.mudbase.dev/default-cover.png",
         width: 2400,
         height: 1260,
         alt: "Mudbase Blog",
