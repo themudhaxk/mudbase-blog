@@ -38,11 +38,20 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: "Mudbase Blog",
     type: "website",
+    images: [
+      {
+        url: "/default-cover.png",
+        width: 2400,
+        height: 1260,
+        alt: "Mudbase Blog",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@mudbasedev",
     creator: "@mudbasedev",
+    images: ["https://blog.mudbase.dev/default-cover.png"],
   },
 };
 
