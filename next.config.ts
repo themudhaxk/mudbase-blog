@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // F-07 (pentest 2026-10-18, LOW): Next.js adds "x-powered-by: Next.js" to every
+  // response by default. This header fingerprints the framework; disable it.
+  poweredByHeader: false,
   turbopack: {
     root: __dirname,
   },
