@@ -206,7 +206,7 @@ export function MobileNav({ categories }: MobileNavProps): React.JSX.Element {
             Docs
           </a>
           <a
-            href="https://console.mudbase.dev/console?signup"
+            href="https://console.mudbase.dev/console?signup&utm_source=blog&utm_medium=site&utm_campaign=blog"
             onClick={close}
             className="mt-2 rounded-full bg-ink-950 px-4 py-3 text-center text-sm font-medium text-ink-50 transition hover:bg-mud-600 dark:bg-ink-50 dark:text-ink-950 dark:hover:bg-mud-400"
           >
