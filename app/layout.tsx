@@ -62,6 +62,7 @@ const siteJsonLd = [
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Mudbase",
+    legalName: "Mudbase Inc",
     url: "https://www.mudbase.dev",
     logo: "https://www.mudbase.dev/logo.png",
     sameAs: [
