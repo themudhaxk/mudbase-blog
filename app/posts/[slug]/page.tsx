@@ -113,6 +113,25 @@ export default async function PostPage({ params }: PostPageProps): Promise<React
             {content}
           </ReactMarkdown>
         </div>
+
+        {/* End-of-post call to action. Per-post on purpose: the campaign is the slug, so a reader
+            arriving from search on one guide tells us which guide converted them. The header link
+            is site-level; this is the one place a reader has finished. */}
+        <aside className="mt-12 rounded-xl border border-ink-200 bg-ink-100 p-6 dark:border-ink-700 dark:bg-ink-900">
+          <p className="font-mono text-xs uppercase tracking-wide text-mud-600 dark:text-mud-300">
+            Build it on Mudbase
+          </p>
+          <p className="mt-2 text-sm leading-relaxed text-ink-700 dark:text-ink-300">
+            Database, auth, storage, realtime, functions and payments behind one API key, with the
+            backend limits written down rather than discovered. Free to start, no card.
+          </p>
+          <a
+            href={`https://console.mudbase.dev/console?signup&utm_source=blog&utm_medium=post-cta&utm_campaign=${encodeURIComponent(post.slug)}`}
+            className="mt-4 inline-flex rounded-full bg-ink-950 px-4 py-2 text-sm font-medium text-ink-50 transition hover:bg-mud-600 dark:bg-ink-50 dark:text-ink-950 dark:hover:bg-mud-400"
+          >
+            Start building
+          </a>
+        </aside>
       </main>
       <SiteFooter />
     </div>
