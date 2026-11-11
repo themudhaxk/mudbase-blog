@@ -23,7 +23,7 @@ export function SiteFooter(): React.JSX.Element {
             X
           </a>
         </div>
-        <p>© {new Date().getUTCFullYear()} Mudbase Inc</p>
+        <p>© {new Date().getUTCFullYear()} Mudbase Inc, 8 The Green, Ste A, Dover, DE 19901, USA</p>
       </div>
     </footer>
   );
