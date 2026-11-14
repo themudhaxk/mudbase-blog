@@ -42,7 +42,7 @@ export async function SiteHeader(): Promise<React.JSX.Element> {
               Docs
             </a>
             <a
-              href="https://console.mudbase.dev/console?signup"
+              href="https://console.mudbase.dev/console?signup&utm_source=blog&utm_medium=site&utm_campaign=blog"
               className="rounded-full bg-ink-950 px-3.5 py-1.5 text-[13px] font-medium text-ink-50 transition hover:bg-mud-600 dark:bg-ink-50 dark:text-ink-950 dark:hover:bg-mud-400"
             >
               Start building
