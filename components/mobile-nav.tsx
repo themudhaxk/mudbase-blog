@@ -192,7 +192,7 @@ export function MobileNav({ categories }: MobileNavProps): React.JSX.Element {
           className="flex flex-col gap-1 px-4 pt-4"
         >
           <a
-            href="https://www.mudbase.dev"
+            href="https://mudbase.dev"
             onClick={close}
             className="rounded-lg px-3 py-3 text-sm font-medium text-ink-700 transition hover:bg-ink-100 hover:text-mud-600 dark:text-ink-200 dark:hover:bg-ink-800 dark:hover:text-mud-300"
           >

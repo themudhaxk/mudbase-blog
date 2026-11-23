@@ -30,7 +30,7 @@ export async function SiteHeader(): Promise<React.JSX.Element> {
           {/* Desktop nav links - hidden on mobile, shown on sm+ */}
           <nav className="hidden items-center gap-4 text-sm text-ink-600 dark:text-ink-200 sm:flex sm:gap-5">
             <a
-              href="https://www.mudbase.dev"
+              href="https://mudbase.dev"
               className="transition hover:text-mud-600 dark:hover:text-mud-300"
             >
               Product
