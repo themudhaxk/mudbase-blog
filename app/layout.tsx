@@ -63,8 +63,8 @@ const siteJsonLd = [
     "@type": "Organization",
     name: "Mudbase",
     legalName: "Mudbase Inc",
-    url: "https://www.mudbase.dev",
-    logo: "https://www.mudbase.dev/logo.png",
+    url: "https://mudbase.dev",
+    logo: "https://mudbase.dev/logo.png",
     sameAs: [
       "https://www.linkedin.com/company/mudbase-dev",
       "https://x.com/mudbasedev",
